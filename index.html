@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CampusNest | Find Your Place. Feel at Home.</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2052%22%3E%3Cellipse%20cx%3D%2225%22%20cy%3D%2225%22%20rx%3D%227%22%20ry%3D%229.5%22%20fill%3D%22%23F4EBD0%22%20transform%3D%22rotate%28-10%2025%2025%29%22/%3E%0A%3Cellipse%20cx%3D%2238%22%20cy%3D%2226%22%20rx%3D%227%22%20ry%3D%229.5%22%20fill%3D%22%23FFF8E7%22%20transform%3D%22rotate%289%2038%2026%29%22/%3E%0A%3Cpath%20d%3D%22M3%2030%20C3%2045%2019%2050%2032%2050%20C45%2050%2061%2045%2061%2030%20C48%2037%2016%2037%203%2030%20Z%22%20fill%3D%22%23A67C2E%22/%3E%0A%3Cg%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%20stroke-width%3D%221.7%22%3E%0A%3Cpath%20d%3D%22M6%2033%20C14%2046%2050%2046%2058%2033%22%20stroke%3D%22%23D9B76A%22/%3E%0A%3Cpath%20d%3D%22M10%2038%20C20%2047%2044%2047%2054%2038%22%20stroke%3D%22%23E8CC8A%22/%3E%0A%3Cpath%20d%3D%22M8%2031%20C18%2045%2026%2046%2034%2047%22%20stroke%3D%22%23C99A46%22/%3E%0A%3Cpath%20d%3D%22M56%2031%20C46%2045%2038%2046%2030%2047%22%20stroke%3D%22%23C99A46%22/%3E%0A%3Cpath%20d%3D%22M14%2034%20L30%2046%22%20stroke%3D%22%23F0DCA0%22/%3E%3Cpath%20d%3D%22M26%2036%20L44%2046%22%20stroke%3D%22%23F0DCA0%22/%3E%3Cpath%20d%3D%22M40%2035%20L52%2043%22%20stroke%3D%22%23E8CC8A%22/%3E%0A%3Cpath%20d%3D%22M5%2031%20L1%2026%22%20stroke%3D%22%23C09A4E%22/%3E%3Cpath%20d%3D%22M59%2031%20L63%2025%22%20stroke%3D%22%23C09A4E%22/%3E%3Cpath%20d%3D%22M11%2034%20L5%2030%22%20stroke%3D%22%23D9B76A%22/%3E%0A%3C/g%3E%0A%3Cpath%20d%3D%22M3%2030%20C16%2037%2048%2037%2061%2030%22%20fill%3D%22none%22%20stroke%3D%22%23C09A4E%22%20stroke-width%3D%222.4%22%20stroke-linecap%3D%22round%22/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="authscreen" id="authScreen" hidden>
+  <div class="land" id="landView">
+    <div class="landnav wrapx">
+      <span class="brand lg"><svg class="nest" viewBox="0 0 64 52" aria-hidden="true"><ellipse cx="25" cy="25" rx="7" ry="9.5" fill="#F4EBD0" transform="rotate(-10 25 25)"/>
+<ellipse cx="38" cy="26" rx="7" ry="9.5" fill="#FFF8E7" transform="rotate(9 38 26)"/>
+<path d="M3 30 C3 45 19 50 32 50 C45 50 61 45 61 30 C48 37 16 37 3 30 Z" fill="#A67C2E"/>
+<g fill="none" stroke-linecap="round" stroke-width="1.7">
+<path d="M6 33 C14 46 50 46 58 33" stroke="#D9B76A"/>
+<path d="M10 38 C20 47 44 47 54 38" stroke="#E8CC8A"/>
+<path d="M8 31 C18 45 26 46 34 47" stroke="#C99A46"/>
+<path d="M56 31 C46 45 38 46 30 47" stroke="#C99A46"/>
+<path d="M14 34 L30 46" stroke="#F0DCA0"/><path d="M26 36 L44 46" stroke="#F0DCA0"/><path d="M40 35 L52 43" stroke="#E8CC8A"/>
+<path d="M5 31 L1 26" stroke="#C09A4E"/><path d="M59 31 L63 25" stroke="#C09A4E"/><path d="M11 34 L5 30" stroke="#D9B76A"/>
+</g>
+<path d="M3 30 C16 37 48 37 61 30" fill="none" stroke="#C09A4E" stroke-width="2.4" stroke-linecap="round"/></svg><span class="bn">Campus<b>Nest</b></span></span>
+      <button class="btn ghost light" id="landLogin" type="button">Log in</button>
+    </div>
+    <div class="landhero wrapx">
+      <div class="landtext">
+        <h1 id="landTitle">Find Your Place. Feel at Home.</h1>
+        <p id="landSub"></p>
+        <div class="landbtns">
+          <button class="btn" id="landJoin" type="button">Join CampusNest</button>
+          <button class="btn ghost light" id="landHave" type="button">I already have an account</button>
+        </div>
+        <button class="linkbtn light" id="guestBtn" type="button">or just browse as a guest</button>
+        <ul class="trust"><li>Rooms and hostels near campus</li><li>Student-run shops</li><li>Free to join</li></ul>
+      </div>
+      <div class="collage" aria-hidden="false">
+        <img class="c1" src="img-dorm.jpg" alt="A shared student room with bunk beds and desks">
+        <img class="c2" src="img-jewelry.jpg" alt="Three gold necklaces held in a hand">
+        <img class="c3" src="img-shoes.jpg" alt="A pair of grey mesh sneakers held in the air">
+      </div>
+    </div>
+    <div class="landfeat wrapx">
+      <div class="fcard"><img src="img-hostel.jpg" alt="A student hostel with a garden courtyard"><h3>Find a place</h3><p>Search rooms, hostels and apartments by price and location.</p></div>
+      <div class="fcard"><img src="img-bracelet.jpg" alt="A hand wearing gold rings and a bracelet"><h3>Shop from students</h3><p>Discover fashion, jewelry and more from businesses on campus.</p></div>
+      <div class="fcard"><img src="img-bunks.jpg" alt="A bright hostel room with bunk beds and a sea view"><h3>List and sell</h3><p>Agents and sellers get seen by students looking right now.</p></div>
+    </div>
+  </div>
+
+  <div class="formview" id="formView" hidden>
+    <div class="formside">
+      <img src="img-room.jpg" alt="A quiet single room with a made bed">
+      <div class="formsideText"><h2>Find Your Place. Feel at Home.</h2><p>Rooms, hostels and student shops, all in one place.</p></div>
+    </div>
+    <div class="formmain">
+      <div class="authcard">
+        <button class="linkbtn" id="backBtn" type="button">&larr; Back</button>
+        <span class="brand"><svg class="nest" viewBox="0 0 64 52" aria-hidden="true"><ellipse cx="25" cy="25" rx="7" ry="9.5" fill="#F4EBD0" transform="rotate(-10 25 25)"/>
+<ellipse cx="38" cy="26" rx="7" ry="9.5" fill="#FFF8E7" transform="rotate(9 38 26)"/>
+<path d="M3 30 C3 45 19 50 32 50 C45 50 61 45 61 30 C48 37 16 37 3 30 Z" fill="#A67C2E"/>
+<g fill="none" stroke-linecap="round" stroke-width="1.7">
+<path d="M6 33 C14 46 50 46 58 33" stroke="#D9B76A"/>
+<path d="M10 38 C20 47 44 47 54 38" stroke="#E8CC8A"/>
+<path d="M8 31 C18 45 26 46 34 47" stroke="#C99A46"/>
+<path d="M56 31 C46 45 38 46 30 47" stroke="#C99A46"/>
+<path d="M14 34 L30 46" stroke="#F0DCA0"/><path d="M26 36 L44 46" stroke="#F0DCA0"/><path d="M40 35 L52 43" stroke="#E8CC8A"/>
+<path d="M5 31 L1 26" stroke="#C09A4E"/><path d="M59 31 L63 25" stroke="#C09A4E"/><path d="M11 34 L5 30" stroke="#D9B76A"/>
+</g>
+<path d="M3 30 C16 37 48 37 61 30" fill="none" stroke="#C09A4E" stroke-width="2.4" stroke-linecap="round"/></svg><span class="bn">Campus<b>Nest</b></span></span>
+        <h1 id="authTitle">Create your account</h1>
+        <p class="sub" id="authSub"></p>
+        <form id="authForm">
+        <label id="lblName">Full name<input id="aName" autocomplete="name"></label>
+        <label id="lblRole">I am a<select id="aRole"><option value="student">Student</option><option value="agent">Agent / Business owner</option></select><small class="hint">Agents get their first month free for room listings. Posting a business is paid.</small></label>
+        <label id="lblSchool">Your school<input id="aSchool"></label>
+        <label>Email<input id="aMail" name="email" type="email" required autocomplete="username"></label>
+        <label>Password (at least 6 characters)<span class="pw"><input id="aPass" name="password" type="password" minlength="6" required autocomplete="new-password"><button type="button" class="eye" id="pwToggle">Show</button></span></label>
+        <label class="check" id="lblTerms"><input type="checkbox" id="aTerms"> <span>I agree to the <a href="legal.html#terms" target="_blank">Terms</a> and <a href="legal.html#privacy" target="_blank">Privacy Policy</a></span></label>
+        <button class="btn dark" id="authSubmit" type="submit">Register</button>
+        <button class="linkbtn" id="forgotBtn" type="button">Forgot password?</button>
+        <button class="linkbtn" id="authToggle" type="button"></button>
+        <p class="note" id="authMsg" role="status"></p>
+      </form>
+        <div id="forgotBox" hidden>
+          <label>Email<input id="fMail" type="email" autocomplete="email"></label>
+          <button class="btn dark" id="fSend" type="button">Send reset link</button>
+          <button class="linkbtn" id="fBack" type="button">Back to log in</button>
+          <p class="note" id="fMsg" role="status"></p>
+        </div>
+        <div id="newPwBox" hidden>
+          <label>New password (at least 6 characters)<input id="npPass" type="password" minlength="6" autocomplete="new-password"></label>
+          <button class="btn dark" id="npSave" type="button">Save new password</button>
+          <p class="note" id="npMsg" role="status"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#home" aria-label="CampusNest home"><svg class="nest" viewBox="0 0 64 52" aria-hidden="true"><ellipse cx="25" cy="25" rx="7" ry="9.5" fill="#F4EBD0" transform="rotate(-10 25 25)"/>
+<ellipse cx="38" cy="26" rx="7" ry="9.5" fill="#FFF8E7" transform="rotate(9 38 26)"/>
+<path d="M3 30 C3 45 19 50 32 50 C45 50 61 45 61 30 C48 37 16 37 3 30 Z" fill="#A67C2E"/>
+<g fill="none" stroke-linecap="round" stroke-width="1.7">
+<path d="M6 33 C14 46 50 46 58 33" stroke="#D9B76A"/>
+<path d="M10 38 C20 47 44 47 54 38" stroke="#E8CC8A"/>
+<path d="M8 31 C18 45 26 46 34 47" stroke="#C99A46"/>
+<path d="M56 31 C46 45 38 46 30 47" stroke="#C99A46"/>
+<path d="M14 34 L30 46" stroke="#F0DCA0"/><path d="M26 36 L44 46" stroke="#F0DCA0"/><path d="M40 35 L52 43" stroke="#E8CC8A"/>
+<path d="M5 31 L1 26" stroke="#C09A4E"/><path d="M59 31 L63 25" stroke="#C09A4E"/><path d="M11 34 L5 30" stroke="#D9B76A"/>
+</g>
+<path d="M3 30 C16 37 48 37 61 30" fill="none" stroke="#C09A4E" stroke-width="2.4" stroke-linecap="round"/></svg><span class="bn">Campus<b>Nest</b></span></a>
+    <button class="menu" id="menu" aria-expanded="false">Menu</button>
+    <ul id="links">
+      <li><a href="#rooms">Rooms</a></li>
+      <li><a href="#shop">Shop</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#why">Why CampusNest</a></li>
+      <li><a href="#business">List your business</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li id="agentLi" hidden><a href="agent.html">Agent / Business</a></li>
+      <li id="adminLi" hidden><a href="admin.html">Admin</a></li>
+    </ul>
+    <button class="btn navcta" id="authBtn">Log in</button>
+  </div>
+</header>
+
+<main id="home">
+<div class="hero">
+  <div class="wrap herogrid">
+    <div>
+    <div id="greet" hidden>
+      <p class="greet"><span id="greetHello">Welcome back,</span> <strong id="greetName"></strong> 👋</p>
+      <div id="premiumBox" class="premium" hidden><span id="premiumText"></span> <button class="btn" id="upgradeBtn" type="button">Upgrade</button></div>
+      <div class="heroActions"><button class="btn" id="heroSaved" type="button">My saved rooms</button><a class="btn ghost light" id="heroAdmin" href="admin.html" hidden>Open admin</a></div>
+    </div>
+    <h1>Find Your Place. Feel at Home.</h1>
+    <p>Explore hostels, rooms and apartments near your campus, and shop from student businesses, all in one place.</p>
+    <ul class="trust"><li>Search by price and location</li><li>Amenities and photos</li><li>Save the places you like</li></ul>
+    </div>
+    <div class="heroimg"><img src="img-dorm.jpg" alt="A shared student room with bunk beds and desks"></div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="search" role="search">
+    <div><label for="fLoc">Location</label><select id="fLoc"><option value="">Any location</option><option>[Location A]</option><option>[Location B]</option><option>[Location C]</option></select></div>
+    <div><label for="fType">Accommodation type</label><select id="fType"><option value="">Hostel / Room / Apartment</option><option>Hostel</option><option>Room</option><option>Apartment</option></select></div>
+    <div><label for="fPrice">Price range</label><select id="fPrice"><option value="">Any price</option><option value="1">Under ₦50,000</option><option value="2">₦50,000 to ₦100,000</option><option value="3">Over ₦100,000</option></select></div>
+    <button class="btn dark" id="go">Search rooms</button>
+  </div>
+</div>
+
+<section id="rooms">
+  <div class="wrap">
+    <div class="bar">
+      <div><h2>Available rooms</h2><p class="sub" style="margin:0">Tap the heart to save a place. Log in to keep your saved rooms on your account.</p></div>
+      <button class="btn ghost" id="savedBtn">Show saved (<span id="cnt">0</span>)</button>
+    </div>
+    <div class="grid" id="grid"></div>
+    
+  </div>
+</section>
+
+<section id="shop" class="alt">
+  <div class="wrap">
+    <h2>Shop from students, in your comfort zone</h2>
+    <p class="sub">CampusNest is also a marketplace. Discover fashion, jewelry, shoes and more from student-run businesses.</p>
+    <div class="tiles">
+      <a class="tile" href="#business"><img src="img-necklace.jpg" alt="Layered gold necklaces" loading="lazy"><span>Jewelry</span></a>
+      <a class="tile" href="#business"><img src="img-bracelet.jpg" alt="Gold rings and a bracelet" loading="lazy"><span>Accessories</span></a>
+      <a class="tile" href="#business"><img src="img-shoes.jpg" alt="Grey mesh sneakers" loading="lazy"><span>Shoes and fashion</span></a>
+      <a class="tile" href="#business"><img src="img-jewelry.jpg" alt="Gold necklaces with pendants" loading="lazy"><span>Gifts</span></a>
+    </div>
+    <p class="note">Selling something? Agents and business owners can post products and services. See "List your business" below.</p>
+  </div>
+</section>
+
+<section id="how" class="alt">
+  <div class="wrap">
+    <h2>How it works</h2>
+    <p class="sub">Three steps from searching to moving in.</p>
+    <div class="cols">
+      <div class="box"><span class="n">1</span><h3>Search</h3><p>Choose your location, type of place and price range.</p></div>
+      <div class="box"><span class="n">2</span><h3>Compare and save</h3><p>Check amenities and photos, then save the rooms you like.</p></div>
+      <div class="box"><span class="n">3</span><h3>Get in touch</h3><p>Use the contact details on each listing to ask questions or book a visit.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap">
+    <h2>Why choose CampusNest</h2>
+    <p class="sub">Built for students who want a simple, clear search.</p>
+    <div class="cols">
+      <div class="box"><h3>Made for students</h3><p>Every search starts with campus locations and student budgets.</p></div>
+      <div class="box"><h3>Clear information</h3><p>Prices, amenities and photos are shown up front on each listing.</p></div>
+      <div class="box"><h3>Easy to contact</h3><p>Contact details sit on every listing, so you do not have to hunt for them.</p></div>
+      <div class="box"><h3>Save your favourites</h3><p>Keep a shortlist and come back to it when you are ready to decide.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="business" class="biz">
+  <div class="wrap">
+    <h2>List your business on CampusNest</h2>
+    <p class="sub">Run a hostel, laundry, food spot or another student service? Get in front of students who are searching right now.</p>
+    <div class="cols">
+      <div class="box"><span class="n" style="background:var(--gold);color:#1A1608">1</span><h3>Contact us</h3><p>Send your business name and what you offer.</p></div>
+      <div class="box"><span class="n" style="background:var(--gold);color:#1A1608">2</span><h3>Pay the listing fee</h3><p>Your business is listed only after payment is confirmed.</p></div>
+      <div class="box"><span class="n" style="background:var(--gold);color:#1A1608">3</span><h3>Go live</h3><p>Once payment is confirmed, your business appears for students to see.</p></div>
+    </div>
+    <div class="pay">
+      <strong>Listing fee:</strong> [Your listing fee]<br>
+      <strong>Pay by bank transfer</strong>
+      <div class="acct"><strong>PalmPay</strong><span>Account number</span><b>7018051613</b><span>Account name</span><b>Onyinye Loveth</b></div>
+      <div class="acct"><strong>UBA</strong><span>Account number</span><b>2277009173</b><span>Account name</span><b>Onyinye Loveth</b></div>
+      <span class="note" style="color:#F0DDB0">After paying, email your receipt to charlesloveth002@gmail.com.</span>
+    </div>
+    <h3 style="margin-top:34px">Request a listing</h3>
+    <form id="bizForm" class="adm">
+      <label>Business name<input id="bName" required></label>
+      <label>What you offer<input id="bCat" placeholder="For example: laundry, food, hostel"></label>
+      <label>Email<input id="bMail" type="email" required></label>
+      <label>Phone<input id="bPhone"></label>
+      <label class="wide">Short description<input id="bDetails"></label>
+      <button class="btn" type="submit">Send request</button>
+      <span id="bizMsg" class="note" role="status" style="color:#F0DDB0"></span>
+    </form>
+    <h3 style="margin-top:40px">Listed businesses</h3>
+    <div class="grid bizlist" id="bizGrid"></div>
+  </div>
+</section>
+
+<section id="register" class="alt">
+  <div class="wrap two">
+    <div>
+      <h2>Register and follow</h2>
+      <p class="sub">Create a student account to save rooms and see them on any device.</p>
+      <div id="loggedOutBox"><p>Log in or register to save rooms and keep your shortlist on any device.</p><button class="btn dark" id="openAuth" type="button">Log in / Register</button></div>
+      <div id="welcome" hidden>
+        <p>You are logged in as <strong id="welcomeName"></strong>. Tap the heart on any room to save it.</p>
+        <button class="btn ghost" id="logoutBtn" type="button">Log out</button>
+      </div>
+    </div>
+    <div>
+      <h2>Follow CampusNest</h2>
+      <p class="sub">Get updates on new rooms and student offers.</p>
+      <div class="social"><a href="#">[Instagram link]</a><a href="#">[X / Twitter link]</a><a href="#">[Facebook link]</a><a href="#">[TikTok link]</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap" style="max-width:800px">
+    <h2>Frequently asked questions</h2>
+    <div id="faqList">
+    <details><summary>Is CampusNest free for students?</summary><p>Joining and browsing rooms is free. Premium is a small fee for 30 days (the price is shown before you pay) and unlocks saving rooms, contact details and listed businesses.</p></details>
+    <details><summary>How do I contact a hostel or landlord?</summary><p>Each listing shows contact details. Use them to ask questions or book a visit.</p></details>
+    <details><summary>How do I save a room?</summary><p>Tap the heart on a room card. Use “Show saved” to see only your saved rooms.</p></details>
+    <details><summary>How can my business be listed?</summary><p>Email us using the “List your business” section. Your business is listed after the listing fee is paid.</p></details>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="alt">
+  <div class="wrap">
+    <h2>Contact us</h2>
+    <p class="sub">Questions about rooms, registering or listing your business? Send us an email.</p>
+    <a class="btn dark" href="mailto:charlesloveth002@gmail.com">charlesloveth002@gmail.com</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <a class="brand" href="#home" aria-label="CampusNest home"><svg class="nest" viewBox="0 0 64 52" aria-hidden="true"><ellipse cx="25" cy="25" rx="7" ry="9.5" fill="#F4EBD0" transform="rotate(-10 25 25)"/>
+<ellipse cx="38" cy="26" rx="7" ry="9.5" fill="#FFF8E7" transform="rotate(9 38 26)"/>
+<path d="M3 30 C3 45 19 50 32 50 C45 50 61 45 61 30 C48 37 16 37 3 30 Z" fill="#A67C2E"/>
+<g fill="none" stroke-linecap="round" stroke-width="1.7">
+<path d="M6 33 C14 46 50 46 58 33" stroke="#D9B76A"/>
+<path d="M10 38 C20 47 44 47 54 38" stroke="#E8CC8A"/>
+<path d="M8 31 C18 45 26 46 34 47" stroke="#C99A46"/>
+<path d="M56 31 C46 45 38 46 30 47" stroke="#C99A46"/>
+<path d="M14 34 L30 46" stroke="#F0DCA0"/><path d="M26 36 L44 46" stroke="#F0DCA0"/><path d="M40 35 L52 43" stroke="#E8CC8A"/>
+<path d="M5 31 L1 26" stroke="#C09A4E"/><path d="M59 31 L63 25" stroke="#C09A4E"/><path d="M11 34 L5 30" stroke="#D9B76A"/>
+</g>
+<path d="M3 30 C16 37 48 37 61 30" fill="none" stroke="#C09A4E" stroke-width="2.4" stroke-linecap="round"/></svg><span class="bn">Campus<b>Nest</b></span></a>
+      <ul><li><a href="#rooms">Rooms</a></li><li><a href="#how">How it works</a></li><li><a href="#business">List your business</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">Contact</a></li><li><a href="legal.html#terms">Terms</a></li><li><a href="legal.html#privacy">Privacy</a></li></ul>
+    </div>
+    <div class="copy">© Loveth 2026</div>
+  </div>
+</footer>
+<dialog id="galleryDlg">
+  <div id="galStage"></div>
+  <div class="cbtns"><button class="btn ghost" id="galPrev" type="button">Previous</button><span id="galCount" class="note" style="align-self:center"></span><button class="btn ghost" id="galNext" type="button">Next</button><button class="btn dark" id="galClose" type="button">Close</button></div>
+</dialog>
+<dialog id="reportDlg">
+  <form id="reportForm">
+    <h3>Report this listing</h3>
+    <label>Reason<select id="repReason"><option>Scam or fake listing</option><option>Wrong price or details</option><option>Room already taken</option><option>Offensive content</option><option>Other</option></select></label>
+    <label>More details (optional)<input id="repDetails" autocomplete="off"></label>
+    <div class="cbtns"><button class="btn dark" type="submit">Send report</button><button class="btn ghost" id="repCancel" type="button">Cancel</button></div>
+    <p class="note" id="repMsg" role="status"></p>
+  </form>
+</dialog>
+<div class="toast" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.0/dist/umd/supabase.js"></script>
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<script src="pay.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

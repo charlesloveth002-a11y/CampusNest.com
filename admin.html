@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CampusNest Admin</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2052%22%3E%3Cellipse%20cx%3D%2225%22%20cy%3D%2225%22%20rx%3D%227%22%20ry%3D%229.5%22%20fill%3D%22%23F4EBD0%22%20transform%3D%22rotate%28-10%2025%2025%29%22/%3E%0A%3Cellipse%20cx%3D%2238%22%20cy%3D%2226%22%20rx%3D%227%22%20ry%3D%229.5%22%20fill%3D%22%23FFF8E7%22%20transform%3D%22rotate%289%2038%2026%29%22/%3E%0A%3Cpath%20d%3D%22M3%2030%20C3%2045%2019%2050%2032%2050%20C45%2050%2061%2045%2061%2030%20C48%2037%2016%2037%203%2030%20Z%22%20fill%3D%22%23A67C2E%22/%3E%0A%3Cg%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%20stroke-width%3D%221.7%22%3E%0A%3Cpath%20d%3D%22M6%2033%20C14%2046%2050%2046%2058%2033%22%20stroke%3D%22%23D9B76A%22/%3E%0A%3Cpath%20d%3D%22M10%2038%20C20%2047%2044%2047%2054%2038%22%20stroke%3D%22%23E8CC8A%22/%3E%0A%3Cpath%20d%3D%22M8%2031%20C18%2045%2026%2046%2034%2047%22%20stroke%3D%22%23C99A46%22/%3E%0A%3Cpath%20d%3D%22M56%2031%20C46%2045%2038%2046%2030%2047%22%20stroke%3D%22%23C99A46%22/%3E%0A%3Cpath%20d%3D%22M14%2034%20L30%2046%22%20stroke%3D%22%23F0DCA0%22/%3E%3Cpath%20d%3D%22M26%2036%20L44%2046%22%20stroke%3D%22%23F0DCA0%22/%3E%3Cpath%20d%3D%22M40%2035%20L52%2043%22%20stroke%3D%22%23E8CC8A%22/%3E%0A%3Cpath%20d%3D%22M5%2031%20L1%2026%22%20stroke%3D%22%23C09A4E%22/%3E%3Cpath%20d%3D%22M59%2031%20L63%2025%22%20stroke%3D%22%23C09A4E%22/%3E%3Cpath%20d%3D%22M11%2034%20L5%2030%22%20stroke%3D%22%23D9B76A%22/%3E%0A%3C/g%3E%0A%3Cpath%20d%3D%22M3%2030%20C16%2037%2048%2037%2061%2030%22%20fill%3D%22none%22%20stroke%3D%22%23C09A4E%22%20stroke-width%3D%222.4%22%20stroke-linecap%3D%22round%22/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="index.html" aria-label="CampusNest home"><svg class="nest" viewBox="0 0 64 52" aria-hidden="true"><ellipse cx="25" cy="25" rx="7" ry="9.5" fill="#F4EBD0" transform="rotate(-10 25 25)"/>
+<ellipse cx="38" cy="26" rx="7" ry="9.5" fill="#FFF8E7" transform="rotate(9 38 26)"/>
+<path d="M3 30 C3 45 19 50 32 50 C45 50 61 45 61 30 C48 37 16 37 3 30 Z" fill="#A67C2E"/>
+<g fill="none" stroke-linecap="round" stroke-width="1.7">
+<path d="M6 33 C14 46 50 46 58 33" stroke="#D9B76A"/>
+<path d="M10 38 C20 47 44 47 54 38" stroke="#E8CC8A"/>
+<path d="M8 31 C18 45 26 46 34 47" stroke="#C99A46"/>
+<path d="M56 31 C46 45 38 46 30 47" stroke="#C99A46"/>
+<path d="M14 34 L30 46" stroke="#F0DCA0"/><path d="M26 36 L44 46" stroke="#F0DCA0"/><path d="M40 35 L52 43" stroke="#E8CC8A"/>
+<path d="M5 31 L1 26" stroke="#C09A4E"/><path d="M59 31 L63 25" stroke="#C09A4E"/><path d="M11 34 L5 30" stroke="#D9B76A"/>
+</g>
+<path d="M3 30 C16 37 48 37 61 30" fill="none" stroke="#C09A4E" stroke-width="2.4" stroke-linecap="round"/></svg><span class="bn">Campus<b>Nest</b></span></a>
+  <strong>Admin</strong>
+  <a class="btn" href="index.html">Back to site</a>
+</div></header>
+
+<main class="wrap" style="padding:40px 20px">
+  <p id="gate" class="empty">Checking access...</p>
+
+  <div id="panel" hidden>
+    <h2>Listing fee</h2>
+    <form id="feeForm" class="adm">
+      <label>Fee in ₦ (for 30 days)<input id="feeIn" type="number" min="1" required></label>
+      <button class="btn dark" type="submit">Save fee</button>
+      <span id="feeMsg" class="note" role="status"></span>
+    </form>
+
+    <h2>Add a room</h2>
+    <form id="roomForm" class="adm">
+      <label>Name<input id="rName" required autocomplete="off"></label>
+      <label>Type<select id="rType"><option>Hostel</option><option>Room</option><option>Apartment</option></select></label>
+      <label>Location<input id="rLoc" required placeholder="Area or street"></label>
+      <label>Price (numbers only)<input id="rPrice" type="number" min="0" required></label>
+      <label>Price is per<select id="rPer"><option>year</option><option>month</option><option>semester</option></select></label>
+      <label>Amenities (separate with commas)<input id="rAm"></label>
+      <label>Photo link (optional)<input id="rPhoto" placeholder="https://..."></label>
+      <label>Upload photos (up to 5)<input id="rFile" type="file" accept="image/*" multiple></label>
+      <label>Upload a short video (optional, max 25 MB)<input id="rVideo" type="file" accept="video/*"></label>
+      <label>Contact (phone or email)<input id="rContact"></label>
+      <label class="wide">Short description<input id="rDesc"></label>
+      <button class="btn dark" type="submit">Add room</button>
+      <span id="roomMsg" class="note"></span>
+    </form>
+
+    <h2 style="margin-top:40px">Rooms</h2>
+    <div class="scroll"><table id="roomTable"></table></div>
+
+    <h2 style="margin-top:40px">Reports</h2>
+    <p class="sub">Open reports about listings. Hiding a listing takes it off the site and closes the report.</p>
+    <div class="scroll"><table id="repTable"></table></div>
+
+    <h2 style="margin-top:40px">Payments from agents</h2>
+    <p class="sub">Open the receipt, check it against your bank app, then confirm. Confirming gives the agent 30 more days.</p>
+    <div class="scroll"><table id="payTable"></table></div>
+
+    <h2 style="margin-top:40px">Business requests</h2>
+    <p class="sub">A business appears on the site only after you mark it as paid.</p>
+    <div class="scroll"><table id="bizTable"></table></div>
+
+    <h2 style="margin-top:40px">FAQ</h2>
+    <p class="sub">These appear on the home page. Lower order numbers show first.</p>
+    <form id="faqForm" class="adm">
+      <label class="wide">Question<input id="fqQ" required autocomplete="off"></label>
+      <label class="wide">Answer<textarea id="fqA" rows="3" required></textarea></label>
+      <label>Order number<input id="fqPos" type="number" value="10"></label>
+      <button class="btn dark" id="fqSave" type="submit">Add question</button>
+      <button class="btn ghost" id="fqCancel" type="button" hidden>Cancel edit</button>
+      <span id="fqMsg" class="note" role="status"></span>
+    </form>
+    <div class="scroll"><table id="faqTable"></table></div>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.0/dist/umd/supabase.js"></script>
+<script src="photo.js"></script>
+<script>
+const db = supabase.createClient("https://qclwmemnszqcbuvxwaiu.supabase.co", "sb_publishable_mzCEnRxsDVHjs_gPyNtqcQ_ZXtT06yI");
+const $ = id => document.getElementById(id);
+const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+function gate(t) { $("gate").innerHTML = t + ' <a href="index.html">Go to the main site</a>'; }
+
+async function init() {
+  const { data: { session } } = await db.auth.getSession();
+  if (!session) { gate("Please log in on the main site first."); return; }
+  const p = await db.from("profiles").select("is_admin").eq("id", session.user.id).maybeSingle();
+  if (!p.data || !p.data.is_admin) { gate("This page is for the CampusNest admin only."); return; }
+  $("gate").hidden = true;
+  $("panel").hidden = false;
+  loadAll();
+}
+
+let faqRows = [], faqEdit = null;
+function resetFaq() {
+  faqEdit = null;
+  $("faqForm").reset();
+  $("fqPos").value = 10;
+  $("fqSave").textContent = "Add question";
+  $("fqCancel").hidden = true;
+}
+
+async function loadAll() {
+  const fq = await db.from("faqs").select("*").order("position").order("id");
+  faqRows = fq.data || [];
+  $("faqTable").innerHTML = "<tr><th>Order</th><th>Question</th><th>Answer</th><th></th></tr>" +
+    (faqRows.map(x => "<tr><td>" + x.position + "</td><td>" + esc(x.question) + "</td><td>" + esc(x.answer) +
+      '</td><td><button class="btn ghost" data-t="faq" data-a="edit" data-id="' + x.id + '">Edit</button> <button class="btn ghost" data-t="faq" data-a="del" data-id="' + x.id + '">Delete</button></td></tr>').join("") ||
+      '<tr><td colspan="4">No questions yet.</td></tr>');
+
+  const f = await db.from("settings").select("value").eq("key", "listing_fee").maybeSingle();
+  if (f.data) $("feeIn").value = f.data.value;
+  const r = await db.from("rooms").select("*, profiles(full_name)").order("created_at", { ascending: false });
+  $("roomTable").innerHTML = "<tr><th>Name</th><th>Type</th><th>Location</th><th>Price</th><th>Added by</th><th>Status</th><th>Shown</th><th></th></tr>" +
+    ((r.data || []).map(x => "<tr><td>" + esc(x.name) + "</td><td>" + esc(x.type) + "</td><td>" + esc(x.location) + "</td><td>₦" +
+      Number(x.price).toLocaleString() + " / " + esc(x.price_period) + "</td><td>" + esc(x.profiles && x.profiles.full_name || "Admin") +
+      '</td><td><span class="badge ' + esc(x.status) + '">' + esc(x.status) + "</span></td><td>" + (x.available ? "Yes" : "Hidden") +
+      '</td><td>' + (x.status !== "approved" ? '<button class="btn ghost" data-t="room" data-a="status" data-v="approved" data-id="' + x.id + '">Approve</button> ' : "") +
+      (x.status === "pending" ? '<button class="btn ghost" data-t="room" data-a="status" data-v="rejected" data-id="' + x.id + '">Reject</button> ' : "") +
+      '<button class="btn ghost" data-t="room" data-a="toggle" data-id="' + x.id + '" data-v="' + x.available + '">' + (x.available ? "Hide" : "Show") +
+      '</button> <button class="btn ghost" data-t="room" data-a="del" data-id="' + x.id + '">Delete</button></td></tr>').join("") ||
+      '<tr><td colspan="8">No rooms yet.</td></tr>');
+
+  const rp = await db.from("reports").select("*, rooms(name)").eq("status", "open").order("created_at", { ascending: false });
+  $("repTable").innerHTML = "<tr><th>Date</th><th>Listing</th><th>Reason</th><th>Details</th><th></th></tr>" +
+    ((rp.data || []).map(x => "<tr><td>" + new Date(x.created_at).toLocaleDateString("en-GB") + "</td><td>" + esc(x.rooms && x.rooms.name) + "</td><td>" + esc(x.reason) + "</td><td>" + esc(x.details) +
+      '</td><td><button class="btn ghost" data-t="rep" data-a="hide" data-id="' + x.id + '" data-room="' + x.room_id + '">Hide listing</button> <button class="btn ghost" data-t="rep" data-a="close" data-id="' + x.id + '">Close report</button></td></tr>').join("") ||
+      '<tr><td colspan="5">No open reports.</td></tr>');
+
+  const py = await db.from("payments").select("*, profiles(full_name)").order("created_at", { ascending: false });
+  $("payTable").innerHTML = "<tr><th>Date</th><th>Agent</th><th>Amount</th><th>For</th><th>Paid from</th><th>Status</th><th></th></tr>" +
+    ((py.data || []).map(x => "<tr><td>" + new Date(x.created_at).toLocaleDateString("en-GB") + "</td><td>" + esc(x.profiles && x.profiles.full_name) + "</td><td>₦" +
+      Number(x.amount).toLocaleString() + "</td><td>" + esc(x.kind) + " / " + esc(x.method) + "</td><td>" + esc(x.sender_name) + "<br>" + esc(x.reference) + "</td><td>" + esc(x.status) +
+      '</td><td>' + (x.receipt_path !== "paystack" ? '<button class="btn ghost" data-t="pay" data-a="view" data-path="' + esc(x.receipt_path) + '">View receipt</button>' : "Paid online") +
+      (x.status === "pending" ? ' <button class="btn ghost" data-t="pay" data-a="confirm" data-id="' + x.id + '">Confirm (30 days)</button> <button class="btn ghost" data-t="pay" data-a="reject" data-id="' + x.id + '">Reject</button>' : "") +
+      "</td></tr>").join("") || '<tr><td colspan="7">No payments yet.</td></tr>');
+
+  const b = await db.from("business_requests").select("*").order("created_at", { ascending: false });
+  $("bizTable").innerHTML = "<tr><th>Business</th><th>Category</th><th>Contact</th><th>Paid</th><th></th></tr>" +
+    ((b.data || []).map(x => "<tr><td><strong>" + esc(x.business_name) + "</strong><br>" + esc(x.details) + "</td><td>" + esc(x.category) + "</td><td>" +
+      esc(x.contact_email) + "<br>" + esc(x.phone) + "</td><td>" + (x.paid ? "Paid" : "Not paid") +
+      '</td><td><button class="btn ghost" data-t="biz" data-a="toggle" data-id="' + x.id + '" data-v="' + x.paid + '">' + (x.paid ? "Unpublish" : "Mark as paid") +
+      '</button> <button class="btn ghost" data-t="biz" data-a="del" data-id="' + x.id + '">Delete</button></td></tr>').join("") ||
+      '<tr><td colspan="5">No requests yet.</td></tr>');
+}
+
+document.addEventListener("click", async e => {
+  const b = e.target.closest("button[data-a]");
+  if (!b) return;
+  const t = b.dataset.t, act = b.dataset.a;
+  let res;
+  if (t === "pay") {
+    if (act === "view") {
+      const w = window.open("", "_blank");
+      const u = await db.storage.from("receipts").createSignedUrl(b.dataset.path, 300);
+      if (u.error) { if (w) w.close(); alert("Could not open the receipt: " + u.error.message); return; }
+      if (w) w.location = u.data.signedUrl; else alert("Please allow pop-ups to view receipts.");
+      return;
+    }
+    if (act === "confirm") res = await db.rpc("confirm_payment", { pid: Number(b.dataset.id), days: 30 });
+    else res = await db.from("payments").update({ status: "rejected" }).eq("id", b.dataset.id);
+  } else if (t === "faq") {
+    const id = Number(b.dataset.id);
+    if (act === "edit") {
+      const f = faqRows.find(x => x.id === id);
+      $("fqQ").value = f.question; $("fqA").value = f.answer; $("fqPos").value = f.position;
+      faqEdit = id; $("fqSave").textContent = "Save changes"; $("fqCancel").hidden = false;
+      $("fqQ").scrollIntoView();
+      return;
+    }
+    if (!confirm("Delete this question?")) return;
+    res = await db.from("faqs").delete().eq("id", id);
+  } else if (t === "rep") {
+    if (act === "hide") res = await db.from("rooms").update({ available: false }).eq("id", b.dataset.room);
+    if (!res || !res.error) res = await db.from("reports").update({ status: "closed" }).eq("id", b.dataset.id);
+  } else {
+    const table = t === "room" ? "rooms" : "business_requests";
+    const field = t === "room" ? "available" : "paid";
+    if (act === "del") {
+      if (!confirm("Delete this for good?")) return;
+      res = await db.from(table).delete().eq("id", b.dataset.id);
+    } else if (act === "status") {
+      res = await db.from("rooms").update({ status: b.dataset.v }).eq("id", b.dataset.id);
+    } else {
+      res = await db.from(table).update({ [field]: b.dataset.v !== "true" }).eq("id", b.dataset.id);
+    }
+  }
+  if (res && res.error) alert("Something went wrong: " + res.error.message);
+  loadAll();
+});
+
+$("feeForm").onsubmit = async e => {
+  e.preventDefault();
+  const { error } = await db.from("settings").update({ value: String(Number($("feeIn").value)) }).eq("key", "listing_fee");
+  $("feeMsg").textContent = error ? "Could not save: " + error.message : "Fee saved. New payments will use it.";
+};
+
+$("fqCancel").onclick = resetFaq;
+$("faqForm").onsubmit = async e => {
+  e.preventDefault();
+  const row = { question: $("fqQ").value.trim(), answer: $("fqA").value.trim(), position: Number($("fqPos").value) || 0 };
+  const r = faqEdit ? await db.from("faqs").update(row).eq("id", faqEdit) : await db.from("faqs").insert(row);
+  $("fqMsg").textContent = r.error ? "Could not save: " + r.error.message : "Saved.";
+  if (!r.error) { resetFaq(); loadAll(); }
+};
+
+$("roomForm").onsubmit = async e => {
+  e.preventDefault();
+  let photos = [], video = null;
+  $("roomMsg").textContent = "Uploading, please wait...";
+  try { photos = await uploadPhotos($("rFile").files); video = await uploadListingVideo($("rVideo").files[0]); }
+  catch (x) { $("roomMsg").textContent = "Upload failed: " + x.message; return; }
+  const link = $("rPhoto").value.trim();
+  if (link && !photos.length) photos = [link];
+  const { error } = await db.from("rooms").insert({
+    name: $("rName").value.trim(), type: $("rType").value, location: $("rLoc").value.trim(),
+    price: Number($("rPrice").value), price_period: $("rPer").value, status: "approved", amenities: $("rAm").value.trim(),
+    photo_url: photos[0] || null, photos: photos, video_url: video, contact: $("rContact").value.trim() || null, description: $("rDesc").value.trim() || null
+  });
+  $("roomMsg").textContent = error ? "Could not add: " + error.message : "Room added.";
+  if (!error) { e.target.reset(); loadAll(); }
+};
+
+init();
+</script>
+</body>
+</html>

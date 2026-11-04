@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CampusNest Agent / Business Dashboard</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2052%22%3E%3Cellipse%20cx%3D%2225%22%20cy%3D%2225%22%20rx%3D%227%22%20ry%3D%229.5%22%20fill%3D%22%23F4EBD0%22%20transform%3D%22rotate%28-10%2025%2025%29%22/%3E%0A%3Cellipse%20cx%3D%2238%22%20cy%3D%2226%22%20rx%3D%227%22%20ry%3D%229.5%22%20fill%3D%22%23FFF8E7%22%20transform%3D%22rotate%289%2038%2026%29%22/%3E%0A%3Cpath%20d%3D%22M3%2030%20C3%2045%2019%2050%2032%2050%20C45%2050%2061%2045%2061%2030%20C48%2037%2016%2037%203%2030%20Z%22%20fill%3D%22%23A67C2E%22/%3E%0A%3Cg%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%20stroke-width%3D%221.7%22%3E%0A%3Cpath%20d%3D%22M6%2033%20C14%2046%2050%2046%2058%2033%22%20stroke%3D%22%23D9B76A%22/%3E%0A%3Cpath%20d%3D%22M10%2038%20C20%2047%2044%2047%2054%2038%22%20stroke%3D%22%23E8CC8A%22/%3E%0A%3Cpath%20d%3D%22M8%2031%20C18%2045%2026%2046%2034%2047%22%20stroke%3D%22%23C99A46%22/%3E%0A%3Cpath%20d%3D%22M56%2031%20C46%2045%2038%2046%2030%2047%22%20stroke%3D%22%23C99A46%22/%3E%0A%3Cpath%20d%3D%22M14%2034%20L30%2046%22%20stroke%3D%22%23F0DCA0%22/%3E%3Cpath%20d%3D%22M26%2036%20L44%2046%22%20stroke%3D%22%23F0DCA0%22/%3E%3Cpath%20d%3D%22M40%2035%20L52%2043%22%20stroke%3D%22%23E8CC8A%22/%3E%0A%3Cpath%20d%3D%22M5%2031%20L1%2026%22%20stroke%3D%22%23C09A4E%22/%3E%3Cpath%20d%3D%22M59%2031%20L63%2025%22%20stroke%3D%22%23C09A4E%22/%3E%3Cpath%20d%3D%22M11%2034%20L5%2030%22%20stroke%3D%22%23D9B76A%22/%3E%0A%3C/g%3E%0A%3Cpath%20d%3D%22M3%2030%20C16%2037%2048%2037%2061%2030%22%20fill%3D%22none%22%20stroke%3D%22%23C09A4E%22%20stroke-width%3D%222.4%22%20stroke-linecap%3D%22round%22/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="index.html" aria-label="CampusNest home"><svg class="nest" viewBox="0 0 64 52" aria-hidden="true"><ellipse cx="25" cy="25" rx="7" ry="9.5" fill="#F4EBD0" transform="rotate(-10 25 25)"/>
+<ellipse cx="38" cy="26" rx="7" ry="9.5" fill="#FFF8E7" transform="rotate(9 38 26)"/>
+<path d="M3 30 C3 45 19 50 32 50 C45 50 61 45 61 30 C48 37 16 37 3 30 Z" fill="#A67C2E"/>
+<g fill="none" stroke-linecap="round" stroke-width="1.7">
+<path d="M6 33 C14 46 50 46 58 33" stroke="#D9B76A"/>
+<path d="M10 38 C20 47 44 47 54 38" stroke="#E8CC8A"/>
+<path d="M8 31 C18 45 26 46 34 47" stroke="#C99A46"/>
+<path d="M56 31 C46 45 38 46 30 47" stroke="#C99A46"/>
+<path d="M14 34 L30 46" stroke="#F0DCA0"/><path d="M26 36 L44 46" stroke="#F0DCA0"/><path d="M40 35 L52 43" stroke="#E8CC8A"/>
+<path d="M5 31 L1 26" stroke="#C09A4E"/><path d="M59 31 L63 25" stroke="#C09A4E"/><path d="M11 34 L5 30" stroke="#D9B76A"/>
+</g>
+<path d="M3 30 C16 37 48 37 61 30" fill="none" stroke="#C09A4E" stroke-width="2.4" stroke-linecap="round"/></svg><span class="bn">Campus<b>Nest</b></span></a>
+  <strong>Agent / Business dashboard</strong>
+  <a class="btn" href="index.html">Back to site</a>
+</div></header>
+
+<main class="wrap" style="padding:40px 20px">
+  <p id="gate" class="empty">Checking access...</p>
+
+  <div id="panel" hidden>
+    <div id="status" class="statusbar" role="status"></div>
+
+    <h2>Add a listing</h2>
+    <form id="roomForm" class="adm">
+      <label>Name<input id="rName" required autocomplete="off"></label>
+      <label>Type<select id="rType"><option>Hostel</option><option>Room</option><option>Apartment</option></select></label>
+      <label>Location<input id="rLoc" required placeholder="Area or street" autocomplete="off"></label>
+      <label>Price (numbers only)<input id="rPrice" type="number" min="0" required></label>
+      <label>Price is per<select id="rPer"><option>year</option><option>month</option><option>semester</option></select></label>
+      <label>Rooms available<input id="rUnits" type="number" min="1" value="1" required></label>
+      <label>Amenities (separate with commas)<input id="rAm" autocomplete="off"></label>
+      <label>Photo link (optional)<input id="rPhoto" placeholder="https://..."></label>
+      <label>Upload photos (up to 5)<input id="rFile" type="file" accept="image/*" multiple></label>
+      <label>Upload a short video (optional, max 25 MB)<input id="rVideo" type="file" accept="video/*"></label>
+      <label>Contact (phone or email)<input id="rContact" autocomplete="off"></label>
+      <label class="wide">Short description<input id="rDesc" autocomplete="off"></label>
+      <button class="btn dark" type="submit">Add listing</button>
+      <span id="roomMsg" class="note" role="status"></span>
+    </form>
+    <p class="note">New listings show as Pending. They appear on the site after CampusNest approves them. Have many identical rooms? Put the number in "Rooms available" instead of adding each one.</p>
+
+    <h2 style="margin-top:40px">My listings</h2>
+    <div class="scroll"><table id="myTable"></table></div>
+
+    <h2 style="margin-top:40px">Post a business</h2>
+    <p class="note">Selling clothes, food or another service? Business posting is paid separately from accommodation (same fee).</p>
+    <form id="bizForm" class="adm">
+      <label>Business name<input id="bName" required autocomplete="off"></label>
+      <label>What you offer<input id="bCat" placeholder="For example: clothes, food" autocomplete="off"></label>
+      <label>Email<input id="bMail" type="email"></label>
+      <label>Phone<input id="bPhone"></label>
+      <label class="wide">Short description<input id="bDetails" autocomplete="off"></label>
+      <label>Photos (up to 5)<input id="bFiles" type="file" accept="image/*" multiple></label>
+      <label>Short video (optional, max 25 MB)<input id="bVideo" type="file" accept="video/*"></label>
+      <button class="btn dark" type="submit">Add business</button>
+      <span id="bizMsg" class="note" role="status"></span>
+    </form>
+    <div class="scroll" style="margin-top:16px"><table id="bizTable"></table></div>
+
+    <h2 id="pay" style="margin-top:40px">Payment</h2>
+    <div class="two">
+      <div class="bank">
+        <h3>Pay online</h3>
+        <p class="note" id="onlineNote"></p>
+        <button class="btn" id="payHousing" type="button">Pay for accommodation listings</button>
+        <button class="btn ghost" id="payBiz" type="button" style="margin-left:6px">Pay to post businesses</button>
+        <p class="note">Card details are entered in Paystack's secure window, never on this page.</p>
+        <h3 style="margin-top:26px">Or pay by bank transfer</h3>
+        <div class="acct">
+          <strong>PalmPay</strong>
+          <span>Account number</span>
+          <b>7018051613</b>
+          <span>Account name</span>
+          <b>Onyinye Loveth</b>
+          <button class="btn ghost cp" type="button" data-c="7018051613">Copy account number</button>
+        </div>
+        <div class="acct">
+          <strong>UBA</strong>
+          <span>Account number</span>
+          <b>2277009173</b>
+          <span>Account name</span>
+          <b>Onyinye Loveth</b>
+          <button class="btn ghost cp" type="button" data-c="2277009173">Copy account number</button>
+        </div>
+        <p class="note" id="feeNote"></p>
+      </div>
+
+      <div>
+        <h3>I have paid</h3>
+        <form id="payForm">
+          <label>Payment is for<select id="pKind"><option value="housing">Accommodation listings</option><option value="business">Posting businesses</option></select></label>
+          <label>Amount paid (₦)<input id="pAmt" type="number" min="1" required></label>
+          <label>Name on the account you paid from<input id="pName" required autocomplete="off"></label>
+          <label>Transfer reference (optional)<input id="pRef" autocomplete="off"></label>
+          <label>Add receipt (photo or PDF, max 5 MB)<input id="pFile" type="file" accept="image/*,application/pdf" required></label>
+          <button class="btn dark" type="submit">Send receipt</button>
+          <p class="note" id="payMsg" role="status"></p>
+        </form>
+      </div>
+    </div>
+
+    <h2 style="margin-top:40px">Payment history</h2>
+    <div class="scroll"><table id="payTable"></table></div>
+  </div>
+</main>
+
+<div class="receiptwrap" id="receipt" hidden>
+  <div class="receiptbox" id="rcBody"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.0/dist/umd/supabase.js"></script>
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<script src="pay.js"></script>
+<script src="photo.js"></script>
+<script>
+const db = supabase.createClient("https://qclwmemnszqcbuvxwaiu.supabase.co", "sb_publishable_mzCEnRxsDVHjs_gPyNtqcQ_ZXtT06yI");
+const $ = id => document.getElementById(id);
+const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const fmt = d => new Date(d).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+let FEE = 1500;
+const kindName = k => ({ housing: "Accommodation posting", business: "Business posting", student: "Student premium" }[k] || k);
+let me = null, prof = null, mine = [], pays = [];
+
+function access() {
+  const now = Date.now();
+  if (prof.paid_until && new Date(prof.paid_until) > now) return { ok: true, t: "Subscription active until " + fmt(prof.paid_until) + "." };
+  if (prof.trial_ends_at && new Date(prof.trial_ends_at) > now) {
+    const d = Math.ceil((new Date(prof.trial_ends_at) - now) / 864e5);
+    return { ok: true, t: "Free trial: " + d + " day" + (d === 1 ? "" : "s") + " left (ends " + fmt(prof.trial_ends_at) + ")." };
+  }
+  return { ok: false, t: "Your access has ended. Make a payment below to keep adding listings." };
+}
+
+async function init() {
+  const { data: { session } } = await db.auth.getSession();
+  if (!session) { $("gate").innerHTML = 'Please log in on the main site first. <a href="index.html">Go to the main site</a>'; return; }
+  me = session.user;
+  const p = await db.from("profiles").select("*").eq("id", me.id).maybeSingle();
+  prof = p.data;
+  if (!prof || prof.role !== "agent") { $("gate").innerHTML = 'This page is for agents and business owners. Register as an Agent / Business owner on the main site. <a href="index.html">Go to the main site</a>'; return; }
+  $("gate").hidden = true;
+  $("panel").hidden = false;
+  $("pName").value = prof.full_name || "";
+  FEE = await getFee();
+  $("feeNote").textContent = "Fee: ₦" + FEE.toLocaleString() + " for 30 days, for each type of posting (accommodation or business).";
+  $("onlineNote").textContent = PAYSTACK_PUBLIC_KEY ? "Pay ₦" + FEE.toLocaleString() + " securely with card, transfer or USSD. Your access starts straight away." : "Online payment is being set up. Please use bank transfer below for now.";
+  load();
+}
+
+async function load() {
+  const a = access();
+  const bizOk = prof.business_until && new Date(prof.business_until) > Date.now();
+  $("status").textContent = a.t + " Business posting: " + (bizOk ? "active until " + fmt(prof.business_until) + "." : "not active (₦" + FEE.toLocaleString() + " for 30 days).");
+  $("status").className = "statusbar " + (a.ok ? "ok" : "bad");
+
+  const r = await db.from("rooms").select("*").eq("agent_id", me.id).order("created_at", { ascending: false });
+  mine = r.data || [];
+  $("myTable").innerHTML = "<tr><th>Name</th><th>Location</th><th>Price</th><th>Rooms</th><th>Status</th><th>Shown</th><th></th></tr>" +
+    (mine.map(x => "<tr><td>" + esc(x.name) + "</td><td>" + esc(x.location) + "</td><td>₦" + Number(x.price).toLocaleString() + " / " + esc(x.price_period) +
+      "</td><td>" + x.units + '</td><td><span class="badge ' + esc(x.status) + '">' + esc(x.status) + "</span></td><td>" + (x.available ? "Yes" : "Hidden") +
+      '</td><td><button class="btn ghost" data-a="toggle" data-id="' + x.id + '" data-v="' + x.available + '">' + (x.available ? "Hide" : "Show") +
+      '</button> <button class="btn ghost" data-a="dup" data-id="' + x.id + '">Duplicate</button> <button class="btn ghost" data-a="del" data-id="' + x.id + '">Delete</button></td></tr>').join("") ||
+      '<tr><td colspan="7">No listings yet.</td></tr>');
+
+  const bz = await db.from("business_requests").select("*").eq("agent_id", me.id).order("created_at", { ascending: false });
+  $("bizTable").innerHTML = "<tr><th>Business</th><th>Category</th><th>Live</th><th></th></tr>" +
+    ((bz.data || []).map(x => "<tr><td>" + esc(x.business_name) + "</td><td>" + esc(x.category) + '</td><td><span class="badge ' + (x.paid ? "approved" : "pending") + '">' + (x.paid ? "Live" : "Not live") +
+      '</span></td><td><button class="btn ghost" data-a="bdel" data-id="' + x.id + '">Delete</button></td></tr>').join("") || '<tr><td colspan="4">No businesses yet.</td></tr>');
+
+  const p = await db.from("payments").select("*").order("created_at", { ascending: false });
+  pays = p.data || [];
+  $("payTable").innerHTML = "<tr><th>Date</th><th>Amount</th><th>For</th><th>Status</th><th>Receipt no.</th><th></th></tr>" +
+    (pays.map(x => "<tr><td>" + fmt(x.created_at) + "</td><td>₦" + Number(x.amount).toLocaleString() + "</td><td>" + kindName(x.kind) + '</td><td><span class="badge ' + (x.status === "confirmed" ? "approved" : x.status === "rejected" ? "rejected" : "pending") + '">' + esc(x.status) + "</span></td><td>" +
+      (x.status === "confirmed" ? "CN-" + String(x.id).padStart(6, "0") : "-") + "</td><td>" +
+      (x.status === "confirmed" ? '<button class="btn ghost" data-a="receipt" data-id="' + x.id + '">View receipt</button>' : "") + "</td></tr>").join("") ||
+      '<tr><td colspan="6">No payments yet.</td></tr>');
+}
+
+document.addEventListener("click", async e => {
+  const c = e.target.closest(".cp");
+  if (c) { try { await navigator.clipboard.writeText(c.dataset.c); c.textContent = "Copied!"; } catch (x) { c.textContent = c.dataset.c; } return; }
+  if (e.target.id === "rcClose") { $("receipt").hidden = true; return; }
+  if (e.target.id === "rcPrint") { window.print(); return; }
+  const b = e.target.closest("button[data-a]");
+  if (!b) return;
+  const id = Number(b.dataset.id);
+  if (b.dataset.a === "receipt") { openReceipt(pays.find(p => p.id === id)); return; }
+  if (b.dataset.a === "bdel") {
+    if (!confirm("Delete this business listing?")) return;
+    const r = await db.from("business_requests").delete().eq("id", id);
+    if (r.error) alert(r.error.message);
+    load(); return;
+  }
+  if (b.dataset.a === "dup") {
+    const x = mine.find(m => m.id === id);
+    $("rName").value = x.name; $("rType").value = x.type; $("rLoc").value = x.location; $("rPrice").value = x.price;
+    $("rPer").value = x.price_period; $("rUnits").value = x.units; $("rAm").value = x.amenities || "";
+    $("rPhoto").value = x.photo_url || ""; $("rContact").value = x.contact || ""; $("rDesc").value = x.description || "";
+    $("roomMsg").textContent = "Copied. Change what is different, then click Add listing.";
+    window.scrollTo(0, 0);
+    return;
+  }
+  let res;
+  if (b.dataset.a === "del") {
+    if (!confirm("Delete this listing for good?")) return;
+    res = await db.from("rooms").delete().eq("id", id);
+  } else {
+    res = await db.from("rooms").update({ available: b.dataset.v !== "true" }).eq("id", id);
+  }
+  if (res.error) alert("Something went wrong: " + res.error.message);
+  load();
+});
+
+$("roomForm").onsubmit = async e => {
+  e.preventDefault();
+  if (!access().ok) { $("roomMsg").textContent = "Your access has ended. Please make a payment below."; return; }
+  let photos = [], video = null;
+  $("roomMsg").textContent = "Uploading, please wait...";
+  try { photos = await uploadPhotos($("rFile").files); video = await uploadListingVideo($("rVideo").files[0]); }
+  catch (x) { $("roomMsg").textContent = "Upload failed: " + x.message; return; }
+  const link = $("rPhoto").value.trim();
+  if (link && !photos.length) photos = [link];
+  const { error } = await db.from("rooms").insert({
+    name: $("rName").value.trim(), type: $("rType").value, location: $("rLoc").value.trim(),
+    price: Number($("rPrice").value), price_period: $("rPer").value, units: Number($("rUnits").value),
+    amenities: $("rAm").value.trim(), photo_url: photos[0] || null, photos: photos, video_url: video,
+    contact: $("rContact").value.trim() || null, description: $("rDesc").value.trim() || null
+  });
+  $("roomMsg").textContent = error ? "Could not add: " + error.message : "Listing sent. It will appear on the site once CampusNest approves it.";
+  if (!error) { e.target.reset(); $("rUnits").value = 1; load(); }
+};
+
+$("payForm").onsubmit = async e => {
+  e.preventDefault();
+  const m = $("payMsg"), f = $("pFile").files[0];
+  if (!f) return;
+  if (f.size > 5 * 1024 * 1024) { m.textContent = "That file is bigger than 5 MB. Please send a smaller photo."; return; }
+  m.textContent = "Sending...";
+  const path = me.id + "/" + Date.now() + "-" + f.name.replace(/[^\w.\-]/g, "_");
+  const up = await db.storage.from("receipts").upload(path, f);
+  if (up.error) { m.textContent = "Could not upload the receipt: " + up.error.message; return; }
+  const ins = await db.from("payments").insert({ amount: Number($("pAmt").value), sender_name: $("pName").value.trim(), reference: $("pRef").value.trim() || null, receipt_path: path, kind: $("pKind").value });
+  if (ins.error) { m.textContent = "Could not save your payment: " + ins.error.message; return; }
+  m.textContent = "Receipt sent. Once CampusNest confirms it, your official receipt will appear in Payment history below.";
+  e.target.reset(); $("pName").value = prof.full_name || "";
+  load();
+};
+
+function openReceipt(p) {
+  $("rcBody").innerHTML = '<h2>CampusNest</h2><p><strong>Payment receipt</strong></p>' +
+    "<p>Receipt no.: <b>CN-" + String(p.id).padStart(6, "0") + "</b></p>" +
+    "<p>Date confirmed: <b>" + fmt(p.confirmed_at) + "</b></p>" +
+    "<p>Received from: <b>" + esc(p.sender_name || prof.full_name) + "</b></p>" +
+    "<p>Amount: <b>₦" + Number(p.amount).toLocaleString() + "</b></p>" +
+    "<p>For: <b>" + kindName(p.kind) + "</b></p><p>Method: <b>" + (p.method === 'paystack' ? "Paystack (online)" : "Bank transfer") + "</b></p>" + (p.reference ? "<p>Reference: <b>" + esc(p.reference) + "</b></p>" : "") +
+    "<p>Status: <b>Confirmed</b></p><p>Thank you for listing with CampusNest.</p>" +
+    '<p class="noprint"><button class="btn dark" id="rcPrint">Print or save as PDF</button> <button class="btn ghost" id="rcClose">Close</button></p>';
+  $("receipt").hidden = false;
+}
+
+async function reloadAll() {
+  const p = await db.from("profiles").select("*").eq("id", me.id).maybeSingle();
+  prof = p.data;
+  load();
+}
+$("payHousing").onclick = () => startPay("housing", reloadAll);
+$("payBiz").onclick = () => startPay("business", reloadAll);
+
+$("bizForm").onsubmit = async e => {
+  e.preventDefault();
+  let bPhotos = [], bVideo = null;
+  $("bizMsg").textContent = "Uploading, please wait...";
+  try { bPhotos = await uploadPhotos($("bFiles").files); bVideo = await uploadListingVideo($("bVideo").files[0]); }
+  catch (x) { $("bizMsg").textContent = "Upload failed: " + x.message; return; }
+  const { error } = await db.from("business_requests").insert({
+    photos: bPhotos, video_url: bVideo, business_name: $("bName").value.trim(), category: $("bCat").value.trim(), details: $("bDetails").value.trim(),
+    contact_email: $("bMail").value.trim(), phone: $("bPhone").value.trim()
+  });
+  const live = prof.business_until && new Date(prof.business_until) > Date.now();
+  $("bizMsg").textContent = error ? "Could not add: " + error.message : (live ? "Business added and live." : "Saved, but not live yet. It goes live after you pay for business posting.");
+  if (!error) { e.target.reset(); load(); }
+};
+
+init();
+</script>
+</body>
+</html>
