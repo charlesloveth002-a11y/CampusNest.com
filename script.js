@@ -258,6 +258,10 @@ $("grid").addEventListener("click", async e => {
   }
   const b = e.target.closest(".heart");
   if (!b) return;
+  if (!user) { 
+    showAuth("save"); 
+    return; 
+  }
   const id = Number(b.dataset.i);
   if (saved.has(id)) {
     saved.delete(id);
@@ -290,6 +294,7 @@ if ($("fUni")) {
 }
 
 $("savedBtn").onclick = () => {
+  if (!user) { showAuth("save"); return; }
   onlySaved = !onlySaved;
   $("savedBtn").firstChild.nodeValue = onlySaved ? "Show all (" : "Show saved (";
   render();
