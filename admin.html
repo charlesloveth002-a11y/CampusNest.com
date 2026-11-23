@@ -36,7 +36,7 @@
       <span id="feeMsg" class="note" role="status"></span>
     </form>
 
-    <h2>Add a room</h2>
+    <h2 id="roomFormTitle">Add a room</h2>
     <form id="roomForm" class="adm">
       <label>Name<input id="rName" required autocomplete="off"></label>
       <label>Type<select id="rType"><option>Hostel</option><option>Room</option><option>Apartment</option></select></label>
@@ -49,7 +49,8 @@
       <label>Upload a short video (optional, max 25 MB)<input id="rVideo" type="file" accept="video/*"></label>
       <label>Contact (phone or email)<input id="rContact"></label>
       <label class="wide">Short description<input id="rDesc"></label>
-      <button class="btn dark" type="submit">Add room</button>
+      <button class="btn dark" id="rSubmit" type="submit">Add room</button>
+      <button class="btn ghost" id="rCancelEdit" type="button" hidden>Cancel edit</button>
       <span id="roomMsg" class="note"></span>
     </form>
 
@@ -102,6 +103,17 @@ async function init() {
 }
 
 let faqRows = [], faqEdit = null;
+let roomRows = [], roomEditId = null;
+
+function resetRoom() {
+  roomEditId = null;
+  $("roomForm").reset();
+  $("roomFormTitle").textContent = "Add a room";
+  $("rSubmit").textContent = "Add room";
+  $("rCancelEdit").hidden = true;
+  $("roomMsg").textContent = "";
+}
+
 function resetFaq() {
   faqEdit = null;
   $("faqForm").reset();
@@ -121,11 +133,13 @@ async function loadAll() {
   const f = await db.from("settings").select("value").eq("key", "listing_fee").maybeSingle();
   if (f.data) $("feeIn").value = f.data.value;
   const r = await db.from("rooms").select("*, profiles(full_name)").order("created_at", { ascending: false });
+  roomRows = r.data || [];
   $("roomTable").innerHTML = "<tr><th>Name</th><th>Type</th><th>Location</th><th>Price</th><th>Added by</th><th>Status</th><th>Shown</th><th></th></tr>" +
-    ((r.data || []).map(x => "<tr><td>" + esc(x.name) + "</td><td>" + esc(x.type) + "</td><td>" + esc(x.location) + "</td><td>₦" +
+    (roomRows.map(x => "<tr><td>" + esc(x.name) + "</td><td>" + esc(x.type) + "</td><td>" + esc(x.location) + "</td><td>₦" +
       Number(x.price).toLocaleString() + " / " + esc(x.price_period) + "</td><td>" + esc(x.profiles && x.profiles.full_name || "Admin") +
       '</td><td><span class="badge ' + esc(x.status) + '">' + esc(x.status) + "</span></td><td>" + (x.available ? "Yes" : "Hidden") +
-      '</td><td>' + (x.status !== "approved" ? '<button class="btn ghost" data-t="room" data-a="status" data-v="approved" data-id="' + x.id + '">Approve</button> ' : "") +
+      '</td><td><button class="btn ghost" data-t="room" data-a="edit" data-id="' + x.id + '">Edit</button> ' +
+      (x.status !== "approved" ? '<button class="btn ghost" data-t="room" data-a="status" data-v="approved" data-id="' + x.id + '">Approve</button> ' : "") +
       (x.status === "pending" ? '<button class="btn ghost" data-t="room" data-a="status" data-v="rejected" data-id="' + x.id + '">Reject</button> ' : "") +
       '<button class="btn ghost" data-t="room" data-a="toggle" data-id="' + x.id + '" data-v="' + x.available + '">' + (x.available ? "Hide" : "Show") +
       '</button> <button class="btn ghost" data-t="room" data-a="del" data-id="' + x.id + '">Delete</button></td></tr>').join("") ||
@@ -183,6 +197,25 @@ document.addEventListener("click", async e => {
   } else if (t === "rep") {
     if (act === "hide") res = await db.from("rooms").update({ available: false }).eq("id", b.dataset.room);
     if (!res || !res.error) res = await db.from("reports").update({ status: "closed" }).eq("id", b.dataset.id);
+  } else if (t === "room" && act === "edit") {
+    const id = Number(b.dataset.id);
+    const rm = roomRows.find(x => x.id === id);
+    if (!rm) return;
+    roomEditId = id;
+    $("rName").value = rm.name || "";
+    $("rType").value = rm.type || "Hostel";
+    $("rLoc").value = rm.location || "";
+    $("rPrice").value = rm.price || "";
+    $("rPer").value = rm.price_period || "year";
+    $("rAm").value = rm.amenities || "";
+    $("rPhoto").value = (rm.photos && rm.photos[0]) || rm.photo_url || "";
+    $("rContact").value = rm.contact || "";
+    $("rDesc").value = rm.description || "";
+    $("roomFormTitle").textContent = "Edit room: " + rm.name;
+    $("rSubmit").textContent = "Save room changes";
+    $("rCancelEdit").hidden = false;
+    $("roomFormTitle").scrollIntoView({ behavior: "smooth" });
+    return;
   } else {
     const table = t === "room" ? "rooms" : "business_requests";
     const field = t === "room" ? "available" : "paid";
@@ -205,6 +238,8 @@ $("feeForm").onsubmit = async e => {
   $("feeMsg").textContent = error ? "Could not save: " + error.message : "Fee saved. New payments will use it.";
 };
 
+$("rCancelEdit").onclick = resetRoom;
+
 $("fqCancel").onclick = resetFaq;
 $("faqForm").onsubmit = async e => {
   e.preventDefault();
@@ -217,18 +252,44 @@ $("faqForm").onsubmit = async e => {
 $("roomForm").onsubmit = async e => {
   e.preventDefault();
   let photos = [], video = null;
-  $("roomMsg").textContent = "Uploading, please wait...";
-  try { photos = await uploadPhotos($("rFile").files); video = await uploadListingVideo($("rVideo").files[0]); }
+  $("roomMsg").textContent = "Saving, please wait...";
+  try { 
+    if ($("rFile").files.length) photos = await uploadPhotos($("rFile").files); 
+    if ($("rVideo").files.length) video = await uploadListingVideo($("rVideo").files[0]); 
+  }
   catch (x) { $("roomMsg").textContent = "Upload failed: " + x.message; return; }
+  
   const link = $("rPhoto").value.trim();
   if (link && !photos.length) photos = [link];
-  const { error } = await db.from("rooms").insert({
-    name: $("rName").value.trim(), type: $("rType").value, location: $("rLoc").value.trim(),
-    price: Number($("rPrice").value), price_period: $("rPer").value, status: "approved", amenities: $("rAm").value.trim(),
-    photo_url: photos[0] || null, photos: photos, video_url: video, contact: $("rContact").value.trim() || null, description: $("rDesc").value.trim() || null
-  });
-  $("roomMsg").textContent = error ? "Could not add: " + error.message : "Room added.";
-  if (!error) { e.target.reset(); loadAll(); }
+
+  const payload = {
+    name: $("rName").value.trim(), 
+    type: $("rType").value, 
+    location: $("rLoc").value.trim(),
+    price: Number($("rPrice").value), 
+    price_period: $("rPer").value, 
+    amenities: $("rAm").value.trim(),
+    contact: $("rContact").value.trim() || null, 
+    description: $("rDesc").value.trim() || null
+  };
+
+  if (photos.length) { payload.photo_url = photos[0]; payload.photos = photos; }
+  if (video) payload.video_url = video;
+
+  let error;
+  if (roomEditId) {
+    const res = await db.from("rooms").update(payload).eq("id", roomEditId);
+    error = res.error;
+    $("roomMsg").textContent = error ? "Could not update: " + error.message : "Room updated successfully!";
+  } else {
+    payload.status = "approved";
+    payload.available = true;
+    const res = await db.from("rooms").insert(payload);
+    error = res.error;
+    $("roomMsg").textContent = error ? "Could not add: " + error.message : "Room added successfully!";
+  }
+  
+  if (!error) { resetRoom(); loadAll(); }
 };
 
 init();

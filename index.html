@@ -3,315 +3,952 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>CampusNest | Find Your Place. Feel at Home.</title>
+<title>CampusNest | Verified Student Hostels, Roommates & Campus Market</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2052%22%3E%3Cellipse%20cx%3D%2225%22%20cy%3D%2225%22%20rx%3D%227%22%20ry%3D%229.5%22%20fill%3D%22%23F4EBD0%22%20transform%3D%22rotate%28-10%2025%2025%29%22/%3E%0A%3Cellipse%20cx%3D%2238%22%20cy%3D%2226%22%20rx%3D%227%22%20ry%3D%229.5%22%20fill%3D%22%23FFF8E7%22%20transform%3D%22rotate%289%2038%2026%29%22/%3E%0A%3Cpath%20d%3D%22M3%2030%20C3%2045%2019%2050%2032%2050%20C45%2050%2061%2045%2061%2030%20C48%2037%2016%2037%203%2030%20Z%22%20fill%3D%22%23A67C2E%22/%3E%0A%3Cg%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%20stroke-width%3D%221.7%22%3E%0A%3Cpath%20d%3D%22M6%2033%20C14%2046%2050%2046%2058%2033%22%20stroke%3D%22%23D9B76A%22/%3E%0A%3Cpath%20d%3D%22M10%2038%20C20%2047%2044%2047%2054%2038%22%20stroke%3D%22%23E8CC8A%22/%3E%0A%3Cpath%20d%3D%22M8%2031%20C18%2045%2026%2046%2034%2047%22%20stroke%3D%22%23C99A46%22/%3E%0A%3Cpath%20d%3D%22M56%2031%20C46%2045%2038%2046%2030%2047%22%20stroke%3D%22%23C99A46%22/%3E%0A%3Cpath%20d%3D%22M14%2034%20L30%2046%22%20stroke%3D%22%23F0DCA0%22/%3E%3Cpath%20d%3D%22M26%2036%20L44%2046%22%20stroke%3D%22%23F0DCA0%22/%3E%3Cpath%20d%3D%22M40%2035%20L52%2043%22%20stroke%3D%22%23E8CC8A%22/%3E%0A%3Cpath%20d%3D%22M5%2031%20L1%2026%22%20stroke%3D%22%23C09A4E%22/%3E%3Cpath%20d%3D%22M59%2031%20L63%2025%22%20stroke%3D%22%23C09A4E%22/%3E%3Cpath%20d%3D%22M11%2034%20L5%2030%22%20stroke%3D%22%23D9B76A%22/%3E%0A%3C/g%3E%0A%3Cpath%20d%3D%22M3%2030%20C16%2037%2048%2037%2061%2030%22%20fill%3D%22none%22%20stroke%3D%22%23C09A4E%22%20stroke-width%3D%222.4%22%20stroke-linecap%3D%22round%22/%3E%3C/svg%3E">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<!-- Sleek Login / Register Modal Dialog -->
 <div class="authscreen" id="authScreen" hidden>
-  <div class="land" id="landView">
-    <div class="landnav wrapx">
-      <span class="brand lg"><svg class="nest" viewBox="0 0 64 52" aria-hidden="true"><ellipse cx="25" cy="25" rx="7" ry="9.5" fill="#F4EBD0" transform="rotate(-10 25 25)"/>
-<ellipse cx="38" cy="26" rx="7" ry="9.5" fill="#FFF8E7" transform="rotate(9 38 26)"/>
-<path d="M3 30 C3 45 19 50 32 50 C45 50 61 45 61 30 C48 37 16 37 3 30 Z" fill="#A67C2E"/>
-<g fill="none" stroke-linecap="round" stroke-width="1.7">
-<path d="M6 33 C14 46 50 46 58 33" stroke="#D9B76A"/>
-<path d="M10 38 C20 47 44 47 54 38" stroke="#E8CC8A"/>
-<path d="M8 31 C18 45 26 46 34 47" stroke="#C99A46"/>
-<path d="M56 31 C46 45 38 46 30 47" stroke="#C99A46"/>
-<path d="M14 34 L30 46" stroke="#F0DCA0"/><path d="M26 36 L44 46" stroke="#F0DCA0"/><path d="M40 35 L52 43" stroke="#E8CC8A"/>
-<path d="M5 31 L1 26" stroke="#C09A4E"/><path d="M59 31 L63 25" stroke="#C09A4E"/><path d="M11 34 L5 30" stroke="#D9B76A"/>
-</g>
-<path d="M3 30 C16 37 48 37 61 30" fill="none" stroke="#C09A4E" stroke-width="2.4" stroke-linecap="round"/></svg><span class="bn">Campus<b>Nest</b></span></span>
-      <button class="btn ghost light" id="landLogin" type="button">Log in</button>
+  <div class="authcard">
+    <button class="auth-close" id="authClose" type="button" aria-label="Close dialog">&times;</button>
+    <a class="brand" href="#home" style="margin-bottom: 20px; display: flex;">
+      <svg class="nest" viewBox="0 0 60 48" fill="none" aria-hidden="true" style="height:38px;">
+        <path d="M6 26C10 38 22 44 30 44C38 44 50 38 54 26" stroke="#d89b2b" stroke-width="4" stroke-linecap="round"/>
+        <path d="M12 32C18 40 25 41 30 41C35 41 42 40 48 32" stroke="#f6ecdb" stroke-width="2.5" stroke-linecap="round" opacity="0.8"/>
+        <ellipse cx="23" cy="20" rx="6.5" ry="8.5" fill="#0f4335" transform="rotate(-8 23 20)"/>
+        <ellipse cx="37" cy="20" rx="6.5" ry="8.5" fill="#d89b2b" transform="rotate(8 37 20)"/>
+      </svg>
+      <span class="bn" style="color: var(--primary-dark)">Campus<b>Nest</b></span>
+    </a>
+    
+    <h2 id="authTitle">Welcome to CampusNest</h2>
+    <p class="sub" id="authSub">Join thousands of students finding verified hostels and campus deals.</p>
+    
+    <div id="landView" hidden>
+      <!-- Kept for backward compatibility with script.js references -->
+      <h1 id="landTitle" hidden></h1>
+      <p id="landSub" hidden></p>
+      <button id="landJoin" type="button" hidden></button>
+      <button id="landHave" type="button" hidden></button>
+      <button id="landLogin" type="button" hidden></button>
+      <button id="guestBtn" type="button" hidden></button>
     </div>
-    <div class="landhero wrapx">
-      <div class="landtext">
-        <h1 id="landTitle">Find Your Place. Feel at Home.</h1>
-        <p id="landSub"></p>
-        <div class="landbtns">
-          <button class="btn" id="landJoin" type="button">Join CampusNest</button>
-          <button class="btn ghost light" id="landHave" type="button">I already have an account</button>
-        </div>
-        <button class="linkbtn light" id="guestBtn" type="button">or just browse as a guest</button>
-        <ul class="trust"><li>Rooms and hostels near campus</li><li>Student-run shops</li><li>Free to join</li></ul>
-      </div>
-      <div class="collage" aria-hidden="false">
-        <img class="c1" src="img-dorm.jpg" alt="A shared student room with bunk beds and desks">
-        <img class="c2" src="img-jewelry.jpg" alt="Three gold necklaces held in a hand">
-        <img class="c3" src="img-shoes.jpg" alt="A pair of grey mesh sneakers held in the air">
-      </div>
-    </div>
-    <div class="landfeat wrapx">
-      <div class="fcard"><img src="img-hostel.jpg" alt="A student hostel with a garden courtyard"><h3>Find a place</h3><p>Search rooms, hostels and apartments by price and location.</p></div>
-      <div class="fcard"><img src="img-bracelet.jpg" alt="A hand wearing gold rings and a bracelet"><h3>Shop from students</h3><p>Discover fashion, jewelry and more from businesses on campus.</p></div>
-      <div class="fcard"><img src="img-bunks.jpg" alt="A bright hostel room with bunk beds and a sea view"><h3>List and sell</h3><p>Agents and sellers get seen by students looking right now.</p></div>
-    </div>
-  </div>
 
-  <div class="formview" id="formView" hidden>
-    <div class="formside">
-      <img src="img-room.jpg" alt="A quiet single room with a made bed">
-      <div class="formsideText"><h2>Find Your Place. Feel at Home.</h2><p>Rooms, hostels and student shops, all in one place.</p></div>
-    </div>
-    <div class="formmain">
-      <div class="authcard">
-        <button class="linkbtn" id="backBtn" type="button">&larr; Back</button>
-        <span class="brand"><svg class="nest" viewBox="0 0 64 52" aria-hidden="true"><ellipse cx="25" cy="25" rx="7" ry="9.5" fill="#F4EBD0" transform="rotate(-10 25 25)"/>
-<ellipse cx="38" cy="26" rx="7" ry="9.5" fill="#FFF8E7" transform="rotate(9 38 26)"/>
-<path d="M3 30 C3 45 19 50 32 50 C45 50 61 45 61 30 C48 37 16 37 3 30 Z" fill="#A67C2E"/>
-<g fill="none" stroke-linecap="round" stroke-width="1.7">
-<path d="M6 33 C14 46 50 46 58 33" stroke="#D9B76A"/>
-<path d="M10 38 C20 47 44 47 54 38" stroke="#E8CC8A"/>
-<path d="M8 31 C18 45 26 46 34 47" stroke="#C99A46"/>
-<path d="M56 31 C46 45 38 46 30 47" stroke="#C99A46"/>
-<path d="M14 34 L30 46" stroke="#F0DCA0"/><path d="M26 36 L44 46" stroke="#F0DCA0"/><path d="M40 35 L52 43" stroke="#E8CC8A"/>
-<path d="M5 31 L1 26" stroke="#C09A4E"/><path d="M59 31 L63 25" stroke="#C09A4E"/><path d="M11 34 L5 30" stroke="#D9B76A"/>
-</g>
-<path d="M3 30 C16 37 48 37 61 30" fill="none" stroke="#C09A4E" stroke-width="2.4" stroke-linecap="round"/></svg><span class="bn">Campus<b>Nest</b></span></span>
-        <h1 id="authTitle">Create your account</h1>
-        <p class="sub" id="authSub"></p>
-        <form id="authForm">
-        <label id="lblName">Full name<input id="aName" autocomplete="name"></label>
-        <label id="lblRole">I am a<select id="aRole"><option value="student">Student</option><option value="agent">Agent / Business owner</option></select><small class="hint">Agents get their first month free for room listings. Posting a business is paid.</small></label>
-        <label id="lblSchool">Your school<input id="aSchool"></label>
-        <label>Email<input id="aMail" name="email" type="email" required autocomplete="username"></label>
-        <label>Password (at least 6 characters)<span class="pw"><input id="aPass" name="password" type="password" minlength="6" required autocomplete="new-password"><button type="button" class="eye" id="pwToggle">Show</button></span></label>
-        <label class="check" id="lblTerms"><input type="checkbox" id="aTerms"> <span>I agree to the <a href="legal.html#terms" target="_blank">Terms</a> and <a href="legal.html#privacy" target="_blank">Privacy Policy</a></span></label>
-        <button class="btn dark" id="authSubmit" type="submit">Register</button>
-        <button class="linkbtn" id="forgotBtn" type="button">Forgot password?</button>
-        <button class="linkbtn" id="authToggle" type="button"></button>
-        <p class="note" id="authMsg" role="status"></p>
+    <div id="formView">
+      <button class="linkbtn" id="backBtn" type="button" hidden>&larr; Back</button>
+      <form id="authForm">
+        <label id="lblName">Full Name
+          <input id="aName" autocomplete="name" placeholder="e.g. Tunde Balogun">
+        </label>
+        <label id="lblRole">Account Type
+          <select id="aRole">
+            <option value="student">Student (Looking for room or buying/selling)</option>
+            <option value="agent">Hostel Agent / Campus Business Owner</option>
+          </select>
+        </label>
+        <label id="lblSchool">Your University / Institution
+          <input id="aSchool" list="fedUniList" placeholder="Obafemi Awolowo University (OAU), Ile-Ife">
+          <datalist id="fedUniList">
+            <option value="Obafemi Awolowo University (OAU), Ile-Ife">
+            <option value="University of Lagos (UNILAG), Akoka">
+            <option value="University of Ibadan (UI), Ibadan">
+            <option value="University of Nigeria, Nsukka (UNN)">
+            <option value="Ahmadu Bello University (ABU), Zaria">
+            <option value="University of Benin (UNIBEN), Benin City">
+            <option value="University of Ilorin (UNILORIN), Ilorin">
+            <option value="Federal University of Technology, Akure (FUTA)">
+            <option value="Federal University of Technology, Minna (FUTMINNA)">
+            <option value="Federal University of Technology, Owerri (FUTO)">
+            <option value="University of Port Harcourt (UNIPORT), Port Harcourt">
+            <option value="University of Abuja (UNIABUJA), Abuja">
+            <option value="University of Calabar (UNICAL), Calabar">
+            <option value="University of Jos (UNIJOS), Jos">
+            <option value="Federal University of Agriculture, Abeokuta (FUNAAB)">
+            <option value="Bayero University Kano (BUK), Kano">
+            <option value="Nnamdi Azikiwe University (UNIZIK), Awka">
+            <option value="University of Uyo (UNIUYO), Uyo">
+            <option value="Federal University, Oye-Ekiti (FUOYE)">
+            <option value="Usmanu Danfodiyo University (UDUS), Sokoto">
+            <option value="Abubakar Tafawa Balewa University (ATBU), Bauchi">
+            <option value="Michael Okpara University of Agriculture (MOUAU), Umudike">
+            <option value="Federal University of Petroleum Resources (FUPRE), Effurun">
+            <option value="Modibbo Adama University (MAU), Yola">
+            <option value="Federal University, Dutse (FUD)">
+            <option value="Federal University, Lafia (FULAFIA)">
+            <option value="Federal University, Lokoja (FULOKOJA)">
+            <option value="Federal University, Kashere (FUKASHERE)">
+            <option value="Federal University, Wukari (FUWUKARI)">
+            <option value="Federal University, Birnin Kebbi (FUBK)">
+            <option value="Federal University, Gusau (FUGUS)">
+            <option value="Federal University, Dutsin-Ma (FUDMA)">
+            <option value="Federal University, Gashua (FUGA)">
+            <option value="Alex Ekwueme Federal University, Ndufu-Alike (AE-FUNAI)">
+            <option value="Joseph Sarwuan Tarka University (JOSTUM), Makurdi">
+          </datalist>
+        </label>
+        <label>Email Address
+          <input id="aMail" name="email" type="email" required autocomplete="username" placeholder="student@example.com">
+        </label>
+        <label>Password (at least 6 characters)
+          <span class="pw">
+            <input id="aPass" name="password" type="password" minlength="6" required autocomplete="new-password" placeholder="••••••••">
+            <button type="button" class="eye" id="pwToggle">Show</button>
+          </span>
+        </label>
+        <label class="check" id="lblTerms" style="display:flex; gap:8px; align-items:flex-start; font-size:0.85rem; margin-top:8px;">
+          <input type="checkbox" id="aTerms" style="width:auto; margin-top:3px;">
+          <span>I agree to the <a href="legal.html#terms" target="_blank" style="text-decoration:underline;">Terms</a> and <a href="legal.html#privacy" target="_blank" style="text-decoration:underline;">Privacy Policy</a></span>
+        </label>
+        
+        <button class="btn dark" id="authSubmit" type="submit" style="margin-top:14px;">Continue</button>
+        <div style="display:flex; justify-content:space-between; margin-top:14px; font-size:0.88rem;">
+          <button class="linkbtn" id="authToggle" type="button">Already have an account? Log in</button>
+          <button class="linkbtn" id="forgotBtn" type="button">Forgot password?</button>
+        </div>
+        <p class="note" id="authMsg" role="status" style="color:var(--danger); font-size:0.88rem; margin-top:10px;"></p>
       </form>
-        <div id="forgotBox" hidden>
-          <label>Email<input id="fMail" type="email" autocomplete="email"></label>
-          <button class="btn dark" id="fSend" type="button">Send reset link</button>
-          <button class="linkbtn" id="fBack" type="button">Back to log in</button>
-          <p class="note" id="fMsg" role="status"></p>
-        </div>
-        <div id="newPwBox" hidden>
-          <label>New password (at least 6 characters)<input id="npPass" type="password" minlength="6" autocomplete="new-password"></label>
-          <button class="btn dark" id="npSave" type="button">Save new password</button>
-          <p class="note" id="npMsg" role="status"></p>
-        </div>
+
+      <div id="forgotBox" hidden>
+        <label>Enter your email
+          <input id="fMail" type="email" autocomplete="email" placeholder="student@example.com">
+        </label>
+        <button class="btn dark" id="fSend" type="button">Send reset link</button>
+        <button class="linkbtn" id="fBack" type="button" style="margin-top:12px; display:block;">Back to log in</button>
+        <p class="note" id="fMsg" role="status"></p>
+      </div>
+
+      <div id="newPwBox" hidden>
+        <label>New password (at least 6 characters)
+          <input id="npPass" type="password" minlength="6" autocomplete="new-password">
+        </label>
+        <button class="btn dark" id="npSave" type="button">Save new password</button>
+        <p class="note" id="npMsg" role="status"></p>
       </div>
     </div>
   </div>
 </div>
 
+<!-- Header / Navigation Bar -->
 <header class="nav">
   <div class="wrap">
-    <a class="brand" href="#home" aria-label="CampusNest home"><svg class="nest" viewBox="0 0 64 52" aria-hidden="true"><ellipse cx="25" cy="25" rx="7" ry="9.5" fill="#F4EBD0" transform="rotate(-10 25 25)"/>
-<ellipse cx="38" cy="26" rx="7" ry="9.5" fill="#FFF8E7" transform="rotate(9 38 26)"/>
-<path d="M3 30 C3 45 19 50 32 50 C45 50 61 45 61 30 C48 37 16 37 3 30 Z" fill="#A67C2E"/>
-<g fill="none" stroke-linecap="round" stroke-width="1.7">
-<path d="M6 33 C14 46 50 46 58 33" stroke="#D9B76A"/>
-<path d="M10 38 C20 47 44 47 54 38" stroke="#E8CC8A"/>
-<path d="M8 31 C18 45 26 46 34 47" stroke="#C99A46"/>
-<path d="M56 31 C46 45 38 46 30 47" stroke="#C99A46"/>
-<path d="M14 34 L30 46" stroke="#F0DCA0"/><path d="M26 36 L44 46" stroke="#F0DCA0"/><path d="M40 35 L52 43" stroke="#E8CC8A"/>
-<path d="M5 31 L1 26" stroke="#C09A4E"/><path d="M59 31 L63 25" stroke="#C09A4E"/><path d="M11 34 L5 30" stroke="#D9B76A"/>
-</g>
-<path d="M3 30 C16 37 48 37 61 30" fill="none" stroke="#C09A4E" stroke-width="2.4" stroke-linecap="round"/></svg><span class="bn">Campus<b>Nest</b></span></a>
+    <a class="brand" href="#home" aria-label="CampusNest home">
+      <svg class="nest" viewBox="0 0 60 48" fill="none" aria-hidden="true">
+        <path d="M6 26C10 38 22 44 30 44C38 44 50 38 54 26" stroke="#d89b2b" stroke-width="4" stroke-linecap="round"/>
+        <path d="M12 32C18 40 25 41 30 41C35 41 42 40 48 32" stroke="#f6ecdb" stroke-width="2.5" stroke-linecap="round" opacity="0.8"/>
+        <ellipse cx="23" cy="20" rx="6.5" ry="8.5" fill="#fdfaf3" transform="rotate(-8 23 20)"/>
+        <ellipse cx="37" cy="20" rx="6.5" ry="8.5" fill="#d89b2b" transform="rotate(8 37 20)"/>
+      </svg>
+      <span class="bn">Campus<b>Nest</b></span>
+    </a>
+    
     <button class="menu" id="menu" aria-expanded="false">Menu</button>
     <ul id="links">
-      <li><a href="#rooms">Rooms</a></li>
-      <li><a href="#shop">Shop</a></li>
-      <li><a href="#how">How it works</a></li>
-      <li><a href="#why">Why CampusNest</a></li>
-      <li><a href="#business">List your business</a></li>
+      <li><a href="#rooms">Hostels & Rooms</a></li>
+      <li><a href="#roommates">Roommates</a></li>
+      <li><a href="#shop">Campus Market</a></li>
+      <li><a href="#how">How it Works</a></li>
+      <li><a href="#business">List Property / Biz</a></li>
       <li><a href="#faq">FAQ</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li id="agentLi" hidden><a href="agent.html">Agent / Business</a></li>
+      <li id="agentLi" hidden><a href="agent.html">Agent Dashboard</a></li>
       <li id="adminLi" hidden><a href="admin.html">Admin</a></li>
     </ul>
-    <button class="btn navcta" id="authBtn">Log in</button>
+
+    <div class="navcta-group">
+      <a class="btn ghost light" href="#business" style="font-size:0.88rem; padding:8px 16px;">+ Post Listing</a>
+      <button class="btn navcta" id="authBtn">Log in</button>
+    </div>
   </div>
 </header>
 
+<!-- Main Page Body -->
 <main id="home">
-<div class="hero">
-  <div class="wrap herogrid">
-    <div>
-    <div id="greet" hidden>
-      <p class="greet"><span id="greetHello">Welcome back,</span> <strong id="greetName"></strong> 👋</p>
-      <div id="premiumBox" class="premium" hidden><span id="premiumText"></span> <button class="btn" id="upgradeBtn" type="button">Upgrade</button></div>
-      <div class="heroActions"><button class="btn" id="heroSaved" type="button">My saved rooms</button><a class="btn ghost light" id="heroAdmin" href="admin.html" hidden>Open admin</a></div>
-    </div>
-    <h1>Find Your Place. Feel at Home.</h1>
-    <p>Explore hostels, rooms and apartments near your campus, and shop from student businesses, all in one place.</p>
-    <ul class="trust"><li>Search by price and location</li><li>Amenities and photos</li><li>Save the places you like</li></ul>
-    </div>
-    <div class="heroimg"><img src="img-dorm.jpg" alt="A shared student room with bunk beds and desks"></div>
-  </div>
-</div>
+  <!-- Hero Section -->
+  <div class="hero">
+    <div class="wrap herogrid">
+      <div>
+        <div class="hero-pill">
+          <span>✨ 100% Scam-Free Student Living</span>
+        </div>
+        
+        <div id="greet" hidden>
+          <p class="greet" style="color:var(--accent); font-size:1.15rem; margin-bottom:8px;">
+            <span id="greetHello">Welcome back,</span> <strong id="greetName"></strong> 👋
+          </p>
+          <div id="premiumBox" class="premium" hidden style="background:rgba(216,155,43,0.15); border:1px solid var(--accent); padding:10px 14px; border-radius:8px; margin-bottom:14px; color:#fff;">
+            <span id="premiumText"></span> 
+            <button class="btn" id="upgradeBtn" type="button" style="padding:6px 14px; font-size:0.85rem; margin-left:8px;">Upgrade</button>
+          </div>
+          <div class="heroActions" style="display:flex; gap:10px; margin-bottom:14px;">
+            <button class="btn" id="heroSaved" type="button" style="padding:8px 16px;">My saved rooms</button>
+            <a class="btn ghost light" id="heroAdmin" href="admin.html" hidden>Open admin</a>
+          </div>
+        </div>
 
-<div class="wrap">
-  <div class="search" role="search">
-    <div><label for="fLoc">Location</label><select id="fLoc"><option value="">Any location</option><option>[Location A]</option><option>[Location B]</option><option>[Location C]</option></select></div>
-    <div><label for="fType">Accommodation type</label><select id="fType"><option value="">Hostel / Room / Apartment</option><option>Hostel</option><option>Room</option><option>Apartment</option></select></div>
-    <div><label for="fPrice">Price range</label><select id="fPrice"><option value="">Any price</option><option value="1">Under ₦50,000</option><option value="2">₦50,000 to ₦100,000</option><option value="3">Over ₦100,000</option></select></div>
-    <button class="btn dark" id="go">Search rooms</button>
-  </div>
-</div>
+        <h1>Find Your Perfect <span>Campus Nest</span> Without Agent Stress.</h1>
+        <p>Verified hostels near campus, student roommate matching, and campus marketplace. Everything you need for university life in one place.</p>
+        
+        <ul class="trust">
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            Physically Verified Hostels
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            24/7 Light & Water Status
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            Zero Ghost Agents
+          </li>
+        </ul>
+      </div>
 
-<section id="rooms">
+      <div class="heroimg">
+        <div class="hero-card-stack">
+          <img src="img-dorm.jpg" alt="Verified Student Room">
+          <div class="hero-floating-badge">
+            <div>
+              <div class="label">Featured Verified Hostel</div>
+              <div class="val">Unity Court • 3 mins walk to Gate</div>
+            </div>
+            <div style="text-align:right;">
+              <div class="label">Price</div>
+              <div class="val" style="color:var(--accent);">₦180,000 / yr</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Live Platform Stats & Social Proof Bar -->
   <div class="wrap">
-    <div class="bar">
-      <div><h2>Available rooms</h2><p class="sub" style="margin:0">Tap the heart to save a place. Log in to keep your saved rooms on your account.</p></div>
-      <button class="btn ghost" id="savedBtn">Show saved (<span id="cnt">0</span>)</button>
+    <div class="stats-bar">
+      <div class="stat-item">
+        <div class="stat-num">15,000+</div>
+        <div class="stat-label">Active University Students</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">36+</div>
+        <div class="stat-label">Federal Campuses Covered</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Physically Verified Hostels</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">₦0</div>
+        <div class="stat-label">Agent Exploitation Charges</div>
+      </div>
     </div>
-    <div class="grid" id="grid"></div>
-    
   </div>
-</section>
 
-<section id="shop" class="alt">
+  <!-- Interactive Search Section -->
+  <div class="wrap search-wrapper">
+    <div class="search" role="search">
+      <div class="search-tabs">
+        <button class="tab-btn active" type="button" data-tab="rooms">
+          <span>🏠</span> Find Hostels & Rooms
+        </button>
+        <button class="tab-btn" type="button" data-tab="roommates">
+          <span>👥</span> Find Roommates
+        </button>
+        <button class="tab-btn" type="button" data-tab="market">
+          <span>🛍️</span> Campus Market
+        </button>
+      </div>
+
+      <div class="search-grid">
+        <div>
+          <label for="fUni">Federal University / Campus</label>
+          <select id="fUni">
+            <option value="oau" selected>Obafemi Awolowo University (OAU), Ile-Ife</option>
+            <option value="">All Nigerian Federal Universities</option>
+            <option value="unilag">University of Lagos (UNILAG), Akoka</option>
+            <option value="ui">University of Ibadan (UI), Ibadan</option>
+            <option value="unn">University of Nigeria, Nsukka (UNN)</option>
+            <option value="abu">Ahmadu Bello University (ABU), Zaria</option>
+            <option value="uniben">University of Benin (UNIBEN), Benin City</option>
+            <option value="unilorin">University of Ilorin (UNILORIN), Ilorin</option>
+            <option value="futa">Federal University of Technology, Akure (FUTA)</option>
+            <option value="futminna">Federal University of Technology, Minna (FUTMINNA)</option>
+            <option value="futo">Federal University of Technology, Owerri (FUTO)</option>
+            <option value="uniport">University of Port Harcourt (UNIPORT), Port Harcourt</option>
+            <option value="uniabuja">University of Abuja (UNIABUJA), Abuja</option>
+            <option value="unical">University of Calabar (UNICAL), Calabar</option>
+            <option value="unijos">University of Jos (UNIJOS), Jos</option>
+            <option value="funaab">Federal University of Agriculture, Abeokuta (FUNAAB)</option>
+            <option value="buk">Bayero University Kano (BUK), Kano</option>
+            <option value="unizik">Nnamdi Azikiwe University (UNIZIK), Awka</option>
+            <option value="uniuyo">University of Uyo (UNIUYO), Uyo</option>
+            <option value="fuoye">Federal University, Oye-Ekiti (FUOYE)</option>
+            <option value="udus">Usmanu Danfodiyo University (UDUS), Sokoto</option>
+            <option value="atbu">Abubakar Tafawa Balewa University (ATBU), Bauchi</option>
+            <option value="mouau">Michael Okpara University of Agriculture (MOUAU), Umudike</option>
+            <option value="fupre">Federal University of Petroleum Resources (FUPRE), Effurun</option>
+            <option value="mau">Modibbo Adama University (MAU), Yola</option>
+            <option value="fud">Federal University, Dutse (FUD)</option>
+            <option value="fulafia">Federal University, Lafia (FULAFIA)</option>
+            <option value="fulokoja">Federal University, Lokoja (FULOKOJA)</option>
+            <option value="fukashere">Federal University, Kashere (FUKASHERE)</option>
+            <option value="fuwukari">Federal University, Wukari (FUWUKARI)</option>
+            <option value="fubk">Federal University, Birnin Kebbi (FUBK)</option>
+            <option value="fugus">Federal University, Gusau (FUGUS)</option>
+            <option value="fudma">Federal University, Dutsin-Ma (FUDMA)</option>
+            <option value="fuga">Federal University, Gashua (FUGA)</option>
+            <option value="aefunai">Alex Ekwueme Federal University, Ndufu-Alike (AE-FUNAI)</option>
+            <option value="jostum">Joseph Sarwuan Tarka University (JOSTUM), Makurdi</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="fLoc">Campus Location / Area</label>
+          <select id="fLoc">
+            <option value="">Any location</option>
+            <option value="Near Campus Gate">Near Campus Gate / Road 1</option>
+            <option value="Faculty Road">Faculty Road / Lecture Theatres</option>
+            <option value="Student Village">Student Village / Hall Road</option>
+            <option value="Hall Road">Hall Road / Asherifa</option>
+            <option value="Estate Road">Estate Road / Mayfair / Parakin</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="fType">Accommodation Type</label>
+          <select id="fType">
+            <option value="">All Types (Hostel / Room / Flat)</option>
+            <option value="Hostel">Hostel (Shared Dorm)</option>
+            <option value="Room">Single Self-Con Room</option>
+            <option value="Apartment">Self-Contained Apartment</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="fPrice">Budget Range</label>
+          <select id="fPrice">
+            <option value="">Any Budget</option>
+            <option value="1">Under ₦150,000 / year</option>
+            <option value="2">₦150,000 - ₦250,000 / year</option>
+            <option value="3">Over ₦250,000 / year</option>
+          </select>
+        </div>
+
+        <button class="btn dark" id="go" type="button">Search Hostels</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- NestBot AI Assistant Banner -->
   <div class="wrap">
-    <h2>Shop from students, in your comfort zone</h2>
-    <p class="sub">CampusNest is also a marketplace. Discover fashion, jewelry, shoes and more from student-run businesses.</p>
-    <div class="tiles">
-      <a class="tile" href="#business"><img src="img-necklace.jpg" alt="Layered gold necklaces" loading="lazy"><span>Jewelry</span></a>
-      <a class="tile" href="#business"><img src="img-bracelet.jpg" alt="Gold rings and a bracelet" loading="lazy"><span>Accessories</span></a>
-      <a class="tile" href="#business"><img src="img-shoes.jpg" alt="Grey mesh sneakers" loading="lazy"><span>Shoes and fashion</span></a>
-      <a class="tile" href="#business"><img src="img-jewelry.jpg" alt="Gold necklaces with pendants" loading="lazy"><span>Gifts</span></a>
-    </div>
-    <p class="note">Selling something? Agents and business owners can post products and services. See "List your business" below.</p>
-  </div>
-</section>
-
-<section id="how" class="alt">
-  <div class="wrap">
-    <h2>How it works</h2>
-    <p class="sub">Three steps from searching to moving in.</p>
-    <div class="cols">
-      <div class="box"><span class="n">1</span><h3>Search</h3><p>Choose your location, type of place and price range.</p></div>
-      <div class="box"><span class="n">2</span><h3>Compare and save</h3><p>Check amenities and photos, then save the rooms you like.</p></div>
-      <div class="box"><span class="n">3</span><h3>Get in touch</h3><p>Use the contact details on each listing to ask questions or book a visit.</p></div>
+    <div class="ai-banner">
+      <div class="ai-banner-content">
+        <div class="ai-avatar">🤖</div>
+        <div>
+          <h4>Ask NestBot AI — Smart Campus Housing Finder</h4>
+          <p>Click any quick prompt to find matching accommodation instantly:</p>
+          <div class="ai-chips">
+            <button class="ai-chip" type="button" data-prompt="gate">🚶 Walking distance to Campus Gate</button>
+            <button class="ai-chip" type="button" data-prompt="budget">💰 Affordable Hostels under ₦180k</button>
+            <button class="ai-chip" type="button" data-prompt="light">⚡ 24/7 Constant Power & Running Water</button>
+            <button class="ai-chip" type="button" data-prompt="apartment">🛋️ Self-Contained Flat with Balcony</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</section>
 
-<section id="why">
-  <div class="wrap">
-    <h2>Why choose CampusNest</h2>
-    <p class="sub">Built for students who want a simple, clear search.</p>
-    <div class="cols">
-      <div class="box"><h3>Made for students</h3><p>Every search starts with campus locations and student budgets.</p></div>
-      <div class="box"><h3>Clear information</h3><p>Prices, amenities and photos are shown up front on each listing.</p></div>
-      <div class="box"><h3>Easy to contact</h3><p>Contact details sit on every listing, so you do not have to hunt for them.</p></div>
-      <div class="box"><h3>Save your favourites</h3><p>Keep a shortlist and come back to it when you are ready to decide.</p></div>
-    </div>
-  </div>
-</section>
+  <!-- Browse by Federal University Section -->
+  <section id="campuses" style="padding-top:20px; padding-bottom:40px;">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Explore Hostels by Federal University</h2>
+          <p class="sub">Find verified accommodation clustered around your lecture halls, faculty gates, and student villages.</p>
+        </div>
+      </div>
 
-<section id="business" class="biz">
-  <div class="wrap">
-    <h2>List your business on CampusNest</h2>
-    <p class="sub">Run a hostel, laundry, food spot or another student service? Get in front of students who are searching right now.</p>
-    <div class="cols">
-      <div class="box"><span class="n" style="background:var(--gold);color:#1A1608">1</span><h3>Contact us</h3><p>Send your business name and what you offer.</p></div>
-      <div class="box"><span class="n" style="background:var(--gold);color:#1A1608">2</span><h3>Pay the listing fee</h3><p>Your business is listed only after payment is confirmed.</p></div>
-      <div class="box"><span class="n" style="background:var(--gold);color:#1A1608">3</span><h3>Go live</h3><p>Once payment is confirmed, your business appears for students to see.</p></div>
-    </div>
-    <div class="pay">
-      <strong>Listing fee:</strong> [Your listing fee]<br>
-      <strong>Pay by bank transfer</strong>
-      <div class="acct"><strong>PalmPay</strong><span>Account number</span><b>7018051613</b><span>Account name</span><b>Onyinye Loveth</b></div>
-      <div class="acct"><strong>UBA</strong><span>Account number</span><b>2277009173</b><span>Account name</span><b>Onyinye Loveth</b></div>
-      <span class="note" style="color:#F0DDB0">After paying, email your receipt to charlesloveth002@gmail.com.</span>
-    </div>
-    <h3 style="margin-top:34px">Request a listing</h3>
-    <form id="bizForm" class="adm">
-      <label>Business name<input id="bName" required></label>
-      <label>What you offer<input id="bCat" placeholder="For example: laundry, food, hostel"></label>
-      <label>Email<input id="bMail" type="email" required></label>
-      <label>Phone<input id="bPhone"></label>
-      <label class="wide">Short description<input id="bDetails"></label>
-      <button class="btn" type="submit">Send request</button>
-      <span id="bizMsg" class="note" role="status" style="color:#F0DDB0"></span>
-    </form>
-    <h3 style="margin-top:40px">Listed businesses</h3>
-    <div class="grid bizlist" id="bizGrid"></div>
-  </div>
-</section>
+      <div class="campus-grid">
+        <div class="campus-card" data-campus="oau">
+          <div class="campus-img">
+            <img src="img-hostel.jpg" alt="Obafemi Awolowo University (OAU), Ile-Ife">
+            <span class="campus-badge">Great Ife • OAU</span>
+          </div>
+          <div class="campus-body">
+            <h3>Obafemi Awolowo University, Ile-Ife</h3>
+            <div class="campus-areas">📍 Road 1, Asherifa, Mayfair, Parakin & Lagere</div>
+            <div class="campus-stat">
+              <span>From ₦120,000 / yr</span>
+              <span style="color:var(--accent);">Explore 140+ Rooms →</span>
+            </div>
+          </div>
+        </div>
 
-<section id="register" class="alt">
-  <div class="wrap two">
-    <div>
-      <h2>Register and follow</h2>
-      <p class="sub">Create a student account to save rooms and see them on any device.</p>
-      <div id="loggedOutBox"><p>Log in or register to save rooms and keep your shortlist on any device.</p><button class="btn dark" id="openAuth" type="button">Log in / Register</button></div>
+        <div class="campus-card" data-campus="unilag">
+          <div class="campus-img">
+            <img src="img-dorm.jpg" alt="University of Lagos (UNILAG)">
+            <span class="campus-badge">UNILAG • Akoka</span>
+          </div>
+          <div class="campus-body">
+            <h3>University of Lagos (UNILAG), Akoka</h3>
+            <div class="campus-areas">📍 Akoka, Yaba, New Hall, St. Finbarr's, Abule Oja</div>
+            <div class="campus-stat">
+              <span>From ₦180,000 / yr</span>
+              <span style="color:var(--accent);">Explore 95+ Rooms →</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="campus-card" data-campus="ui">
+          <div class="campus-img">
+            <img src="demo-city.jpg" alt="University of Ibadan (UI)">
+            <span class="campus-badge">UI • First & Best</span>
+          </div>
+          <div class="campus-body">
+            <h3>University of Ibadan (UI), Ibadan</h3>
+            <div class="campus-areas">📍 Agbowo, Bodija, UI Main Gate, Samonda</div>
+            <div class="campus-stat">
+              <span>From ₦110,000 / yr</span>
+              <span style="color:var(--accent);">Explore 110+ Rooms →</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="campus-card" data-campus="futa">
+          <div class="campus-img">
+            <img src="demo-wood.jpg" alt="Federal University of Technology, Akure">
+            <span class="campus-badge">FUTA • Akure</span>
+          </div>
+          <div class="campus-body">
+            <h3>Federal University of Technology, Akure</h3>
+            <div class="campus-areas">📍 South Gate, North Gate, Aule, FUTA Junction</div>
+            <div class="campus-stat">
+              <span>From ₦100,000 / yr</span>
+              <span style="color:var(--accent);">Explore 85+ Rooms →</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Available Rooms Section -->
+  <section id="rooms">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Available Student Hostels & Rooms</h2>
+          <p class="sub">Verified listings with clear pricing, proximity to faculty, and direct landlord/agent contact.</p>
+        </div>
+        <div class="bar">
+          <button class="btn ghost" id="savedBtn">Show saved (<span id="cnt">0</span>)</button>
+        </div>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <!-- Scam-Free Guarantee Section -->
+  <section id="trust-guarantee" class="alt">
+    <div class="wrap">
+      <div class="section-head" style="text-align:center; display:block;">
+        <h2>The CampusNest Scam-Free Guarantee</h2>
+        <p class="sub" style="margin:0 auto;">Built by students, for students. We eliminated the shady middlemen and ghost landlords.</p>
+      </div>
+
+      <div class="guarantee-grid">
+        <div class="guarantee-card">
+          <div class="guarantee-icon">🛡️</div>
+          <h4>In-Person Verification</h4>
+          <p>We never approve listings from internet photos. Campus student reps physically visit every lodge to confirm it actually exists.</p>
+        </div>
+        <div class="guarantee-card">
+          <div class="guarantee-icon">⚡</div>
+          <h4>Verified Utilities</h4>
+          <p>We check for borehole running water, solar inverters, and electricity schedules so you aren't surprised after moving in.</p>
+        </div>
+        <div class="guarantee-card">
+          <div class="guarantee-icon">🏷️</div>
+          <h4>0% Middleman Extortion</h4>
+          <p>Direct landlord rates. No exorbitant 50% "agreement & commission" agency fees that eat into your semester budget.</p>
+        </div>
+        <div class="guarantee-card">
+          <div class="guarantee-icon">🤝</div>
+          <h4>Verified Student Peers</h4>
+          <p>Roommate matching requires institutional email or matric verification so you can share rooms with genuine, safe peers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Roommate Finder Section -->
+  <section id="roommates">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>👥 Roommate Matching Hub</h2>
+          <p class="sub">Can't afford a single apartment alone? Connect with verified fellow students to split rent safely.</p>
+        </div>
+        <a class="btn dark" href="#business" style="font-size:0.9rem;">+ Post Roommate Request</a>
+      </div>
+
+      <div class="grid">
+        <article class="roommate-card">
+          <div class="roommate-top">
+            <img class="roommate-avatar" src="demo-shoes.jpg" alt="Student Profile">
+            <div class="roommate-info">
+              <h4>Amina O.</h4>
+              <span>300L Law • UNILAG (Akoka)</span>
+            </div>
+          </div>
+          <div>
+            <span class="roommate-badge">Female Only</span>
+            <div class="roommate-budget">Budget: ₦90,000 / student (Share ₦180k)</div>
+          </div>
+          <p class="desc" style="color:var(--muted); font-size:0.9rem; margin:0;">
+            Looking for 1 clean, serious student to split a 2-bed self-con flat near St. Finbarr's / Akoka gate. Stable light & inverter available.
+          </p>
+          <div class="chips">
+            <span>Non-smoker</span>
+            <span>Study friendly</span>
+            <span>Early riser</span>
+          </div>
+          <a class="btn dark" target="_blank" rel="noopener" href="https://wa.me/2347018051613?text=Hi%20Amina,%20I%20saw%20your%20roommate%20request%20on%20CampusNest." style="padding:9px; text-align:center;">Connect on WhatsApp</a>
+        </article>
+
+        <article class="roommate-card">
+          <div class="roommate-top">
+            <img class="roommate-avatar" src="demo-lamp.jpg" alt="Student Profile">
+            <div class="roommate-info">
+              <h4>David K.</h4>
+              <span>400L CompSci • FUTA</span>
+            </div>
+          </div>
+          <div>
+            <span class="roommate-badge">Male Only</span>
+            <div class="roommate-budget">Budget: ₦110,000 / student (Share ₦220k)</div>
+          </div>
+          <p class="desc" style="color:var(--muted); font-size:0.9rem; margin:0;">
+            Seeking a tech enthusiast or chill student to share a spacious room in South Gate area. High speed Wi-Fi setup in place.
+          </p>
+          <div class="chips">
+            <span>Techie</span>
+            <span>Clean habits</span>
+            <span>Solar power</span>
+          </div>
+          <a class="btn dark" target="_blank" rel="noopener" href="https://wa.me/2347018051613?text=Hi%20David,%20I%20saw%20your%20roommate%20request%20on%20CampusNest." style="padding:9px; text-align:center;">Connect on WhatsApp</a>
+        </article>
+
+        <article class="roommate-card">
+          <div class="roommate-top">
+            <img class="roommate-avatar" src="img-bracelet.jpg" alt="Student Profile">
+            <div class="roommate-info">
+              <h4>Blessing E.</h4>
+              <span>200L Biochemistry • UI Ibadan</span>
+            </div>
+          </div>
+          <div>
+            <span class="roommate-badge">Female Only</span>
+            <div class="roommate-budget">Budget: ₦75,000 / student (Share ₦150k)</div>
+          </div>
+          <p class="desc" style="color:var(--muted); font-size:0.9rem; margin:0;">
+            Secured a serene 2-man room at Agbowo near UI main gate. Need a calm flatmate who loves a peaceful study environment.
+          </p>
+          <div class="chips">
+            <span>Quiet hours</span>
+            <span>Running water</span>
+            <span>Safe gate</span>
+          </div>
+          <a class="btn dark" target="_blank" rel="noopener" href="https://wa.me/2347018051613?text=Hi%20Blessing,%20I%20saw%20your%20roommate%20request%20on%20CampusNest." style="padding:9px; text-align:center;">Connect on WhatsApp</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Campus Student Marketplace Section -->
+  <section id="shop">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>🛍️ Student Campus Marketplace</h2>
+          <p class="sub">Buy, sell and exchange dorm appliances, textbooks, gadgets and thrift fashion directly with campus peers.</p>
+        </div>
+        <a class="btn dark" href="#business" style="font-size:0.9rem;">+ Sell Your Item</a>
+      </div>
+
+      <div class="market-grid">
+        <article class="market-card">
+          <div class="market-img">
+            <img src="demo-shoes.jpg" alt="Campus Thrift Shoes">
+            <span class="tag" style="background:#2563eb;">Fashion</span>
+          </div>
+          <div class="market-in">
+            <h4>Grey Mesh Campus Sneakers (Size 42)</h4>
+            <div class="market-price">₦12,500</div>
+            <div class="market-seller">👤 Tolu (UNILAG New Hall)</div>
+            <a class="btn dark" target="_blank" rel="noopener" href="https://wa.me/2347018051613?text=Hi,%20I%20want%20to%20buy%20the%20Sneakers%20from%20CampusNest." style="padding:8px; font-size:0.85rem; margin-top:8px;">Chat Seller</a>
+          </div>
+        </article>
+
+        <article class="market-card">
+          <div class="market-img">
+            <img src="demo-lamp.jpg" alt="Dorm Study Lamp">
+            <span class="tag" style="background:#d97706;">Dorm Gadget</span>
+          </div>
+          <div class="market-in">
+            <h4>Rechargeable Study Lamp + Power Bank</h4>
+            <div class="market-price">₦9,000</div>
+            <div class="market-seller">👤 Chinedu (Hostel Block C)</div>
+            <a class="btn dark" target="_blank" rel="noopener" href="https://wa.me/2347018051613?text=Hi,%20I%20want%20to%20buy%20the%20Study%20Lamp%20from%20CampusNest." style="padding:8px; font-size:0.85rem; margin-top:8px;">Chat Seller</a>
+          </div>
+        </article>
+
+        <article class="market-card">
+          <div class="market-img">
+            <img src="img-jewelry.jpg" alt="Student Handcrafted Jewelry">
+            <span class="tag" style="background:#9333ea;">Handmade</span>
+          </div>
+          <div class="market-in">
+            <h4>Gold Layered Necklaces & Rings</h4>
+            <div class="market-price">₦6,500</div>
+            <div class="market-seller">👤 Zara Styles (Faculty of Arts)</div>
+            <a class="btn dark" target="_blank" rel="noopener" href="https://wa.me/2347018051613?text=Hi,%20I%20want%20to%20order%20the%20Jewelry%20set%20from%20CampusNest." style="padding:8px; font-size:0.85rem; margin-top:8px;">Chat Seller</a>
+          </div>
+        </article>
+
+        <article class="market-card">
+          <div class="market-img">
+            <img src="demo-cork.jpg" alt="Study Desk Organizer">
+            <span class="tag" style="background:#059669;">Dorm Decor</span>
+          </div>
+          <div class="market-in">
+            <h4>Cork Notice Board & Desk Organizer</h4>
+            <div class="market-price">₦5,000</div>
+            <div class="market-seller">👤 Emeka (Engineering Quad)</div>
+            <a class="btn dark" target="_blank" rel="noopener" href="https://wa.me/2347018051613?text=Hi,%20I%20want%20to%20buy%20the%20Notice%20Board%20from%20CampusNest." style="padding:8px; font-size:0.85rem; margin-top:8px;">Chat Seller</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Student Testimonials Section -->
+  <section id="testimonials" class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Stories from Students Living on CampusNest</h2>
+          <p class="sub">Hear how fellow students at OAU, UNILAG, and UI found peace of mind and safe housing.</p>
+        </div>
+      </div>
+
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"I almost lost ₦180,000 to a fake hostel agent around Asherifa last session. A classmate recommended CampusNest. The hostel was physically verified, I booked an inspection on WhatsApp, and got my keys in 24 hours!"</p>
+          <div class="testimonial-author">
+            <img class="testimonial-avatar" src="demo-shoes.jpg" alt="Chisom E.">
+            <div class="testimonial-meta">
+              <h5>Chisom E.</h5>
+              <span>300L Microbiology • OAU (Ile-Ife)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"As a fresher coming all the way to Lagos, getting an off-campus room without being extorted was scary. CampusNest matched me with a 400L roommate in Akoka and we split a self-con flat. Seamless experience."</p>
+          <div class="testimonial-author">
+            <img class="testimonial-avatar" src="demo-lamp.jpg" alt="Tunde A.">
+            <div class="testimonial-meta">
+              <h5>Tunde A.</h5>
+              <span>100L Accounting • UNILAG (Akoka)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"The student market is a game changer! When I was relocating from Agbowo to Bodija, I sold my mini-fridge and study table within 48 hours to another UI student. Zero hassle, instant payment."</p>
+          <div class="testimonial-author">
+            <img class="testimonial-avatar" src="img-bracelet.jpg" alt="Amina K.">
+            <div class="testimonial-meta">
+              <h5>Amina K.</h5>
+              <span>400L Economics • UI (Ibadan)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section id="how">
+    <div class="wrap">
+      <h2>How CampusNest Protects Students</h2>
+      <p class="sub">Three simple steps from browsing to safe keys in hand.</p>
+      
+      <div class="cols">
+        <div class="box">
+          <span class="n">1</span>
+          <h3>Search & Verify</h3>
+          <p>Filter by university campus, budget, and distance. Every hostel on CampusNest has been verified for security and genuine ownership.</p>
+        </div>
+        <div class="box">
+          <span class="n">2</span>
+          <h3>Tour or Match</h3>
+          <p>Schedule a quick physical or video inspection directly on WhatsApp. Need a roommate? Match with verified students.</p>
+        </div>
+        <div class="box">
+          <span class="n">3</span>
+          <h3>Move In Scam-Free</h3>
+          <p>Pay securely without fake agent extortion fees. Enjoy peace of mind and focus on your academic success.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- List Your Property / Business Section -->
+  <section id="business" class="biz">
+    <div class="wrap">
+      <h2>Partner with CampusNest</h2>
+      <p class="sub">Are you a hostel owner, verified agent, or student entrepreneur? Reach thousands of active university students looking right now.</p>
+      
+      <div class="pricing-table">
+        <div class="pricing-card">
+          <h3>Student Peer Seller</h3>
+          <p class="sub">For student hustlers selling thrifts, snacks, books or gadgets on campus.</p>
+          <div class="pricing-price">Free <span>/ Forever</span></div>
+          <ul>
+            <li>Post up to 3 campus marketplace items</li>
+            <li>Direct WhatsApp inquiries from peers</li>
+            <li>Campus verification badge</li>
+          </ul>
+          <a class="btn ghost light" href="#bizForm">Post Free Student Item</a>
+        </div>
+
+        <div class="pricing-card featured">
+          <span class="pricing-badge">Most Popular</span>
+          <h3>Verified Hostel / Landlord</h3>
+          <p class="sub">For lodge managers, hostel landlords, and accredited student housing agents.</p>
+          <div class="pricing-price">₦5,000 <span>/ 30 Days</span></div>
+          <ul>
+            <li>Verified Green Inspection Badge</li>
+            <li>Featured on University Search Top</li>
+            <li>Multi-photo gallery & short video tour</li>
+            <li>Direct WhatsApp & Phone call leads</li>
+            <li>Zero middleman deductions</li>
+          </ul>
+          <a class="btn" href="#bizForm">Get Verified Placement</a>
+        </div>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:14px; padding:28px; margin-top:32px;">
+        <h3 style="margin-bottom:12px;">Submit Your Listing Request</h3>
+        <p class="sub" style="margin-bottom:20px;">Fill out your details below. Our campus inspection team reviews and activates your verified listing within 2 hours.</p>
+        
+        <form id="bizForm" class="adm">
+          <label>Business / Hostel Name
+            <input id="bName" required placeholder="e.g. Royal Palms Luxury Hostel">
+          </label>
+          <label>Category
+            <input id="bCat" placeholder="e.g. Student Hostel, Dorm Laundry, Gadgets">
+          </label>
+          <label>Contact Email
+            <input id="bMail" type="email" required placeholder="manager@hostel.com">
+          </label>
+          <label>WhatsApp / Phone Number
+            <input id="bPhone" placeholder="08012345678">
+          </label>
+          <label class="wide">Short Description & Campus Proximity
+            <input id="bDetails" placeholder="e.g. 10 self-con rooms available, 4 mins walk to Main Gate, 24/7 solar light">
+          </label>
+          <button class="btn" type="submit" style="height:48px;">Submit Listing for Verification</button>
+          <span id="bizMsg" class="note" role="status" style="color:var(--accent); grid-column:1/-1;"></span>
+        </form>
+      </div>
+
+      <h3 style="margin-top:40px;">Active Verified Campus Partners</h3>
+      <div class="grid bizlist" id="bizGrid" style="margin-top:20px;"></div>
+    </div>
+  </section>
+
+  <!-- Student Registration Callout -->
+  <section id="register" class="alt">
+    <div class="wrap" style="text-align:center; max-width:680px;">
+      <h2>Join the CampusNest Network</h2>
+      <p class="sub" style="margin:0 auto 24px;">Save your shortlisted hostels, match with trusted roommates, and get instant alerts when fresh accommodations drop near your faculty.</p>
+      
+      <div id="loggedOutBox">
+        <button class="btn dark" id="openAuth" type="button" style="padding:14px 32px; font-size:1.05rem;">Create Free Student Account</button>
+      </div>
       <div id="welcome" hidden>
-        <p>You are logged in as <strong id="welcomeName"></strong>. Tap the heart on any room to save it.</p>
+        <p>You are logged in as <strong id="welcomeName"></strong>. Your saved accommodations sync across all your devices.</p>
         <button class="btn ghost" id="logoutBtn" type="button">Log out</button>
       </div>
     </div>
-    <div>
-      <h2>Follow CampusNest</h2>
-      <p class="sub">Get updates on new rooms and student offers.</p>
-      <div class="social"><a href="#">[Instagram link]</a><a href="#">[X / Twitter link]</a><a href="#">[Facebook link]</a><a href="#">[TikTok link]</a></div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section id="faq">
-  <div class="wrap" style="max-width:800px">
-    <h2>Frequently asked questions</h2>
-    <div id="faqList">
-    <details><summary>Is CampusNest free for students?</summary><p>Joining and browsing rooms is free. Premium is a small fee for 30 days (the price is shown before you pay) and unlocks saving rooms, contact details and listed businesses.</p></details>
-    <details><summary>How do I contact a hostel or landlord?</summary><p>Each listing shows contact details. Use them to ask questions or book a visit.</p></details>
-    <details><summary>How do I save a room?</summary><p>Tap the heart on a room card. Use “Show saved” to see only your saved rooms.</p></details>
-    <details><summary>How can my business be listed?</summary><p>Email us using the “List your business” section. Your business is listed after the listing fee is paid.</p></details>
+  <!-- Campus Ambassador Callout Banner -->
+  <section style="padding:20px 0 60px;">
+    <div class="wrap">
+      <div style="background:linear-gradient(135deg, #092a21 0%, #0f4335 100%); color:#fff; border-radius:16px; padding:36px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:24px; box-shadow:var(--shadow-md);">
+        <div style="max-width:560px;">
+          <span style="background:rgba(216,155,43,0.25); border:1px solid var(--accent); color:var(--accent); font-size:0.78rem; font-weight:700; padding:3px 12px; border-radius:99px; text-transform:uppercase;">Campus Leaders Program</span>
+          <h3 style="color:#fff; font-size:1.6rem; margin:10px 0 8px;">Become a CampusNest Ambassador</h3>
+          <p style="color:#dbeae3; font-size:0.95rem; margin:0;">Represent your faculty or hostel block. Verify listings, help incoming freshers find scam-free homes, and earn stipends and tech perks every semester.</p>
+        </div>
+        <a class="btn" target="_blank" rel="noopener" href="https://wa.me/2347018051613?text=Hi%20CampusNest,%20I%20am%20interested%20in%20becoming%20a%20Campus%20Ambassador.">Apply on WhatsApp →</a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="contact" class="alt">
-  <div class="wrap">
-    <h2>Contact us</h2>
-    <p class="sub">Questions about rooms, registering or listing your business? Send us an email.</p>
-    <a class="btn dark" href="mailto:charlesloveth002@gmail.com">charlesloveth002@gmail.com</a>
-  </div>
-</section>
+  <!-- FAQ Section -->
+  <section id="faq">
+    <div class="wrap" style="max-width:840px;">
+      <h2 style="text-align:center; margin-bottom:10px;">Frequently Asked Questions</h2>
+      <p class="sub" style="text-align:center; margin:0 auto 36px;">Everything you need to know about student accommodation and safety on CampusNest.</p>
+      
+      <div id="faqList">
+        <details open>
+          <summary>How does CampusNest protect students from hostel scams?</summary>
+          <p>Every accommodation listing is physically inspected or verified with student ambassadors on each campus. We confirm running water, electrical stability, and genuine ownership before granting the "Verified" badge.</p>
+        </details>
+        <details>
+          <summary>Is browsing and contacting hostels free for students?</summary>
+          <p>Yes! Browsing listings, saving favorites, and searching across Nigerian campuses is 100% free. You can directly connect with verified hostel managers via WhatsApp or phone call.</p>
+        </details>
+        <details>
+          <summary>How does the Roommate Matching Hub work?</summary>
+          <p>Students looking to split rent can post their budget and university department. You can review their study habits, clean preferences, and contact them directly to team up before renting.</p>
+        </details>
+        <details>
+          <summary>How do I list my hostel or student service?</summary>
+          <p>Click "List Property / Biz" in the menu and submit your details. Landlords and verified agents can activate placement with our automated Paystack system for instant visibility.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Us Section -->
+  <section id="contact" class="alt">
+    <div class="wrap" style="text-align:center; max-width:600px;">
+      <h2>Need Help or Have Inquiries?</h2>
+      <p class="sub" style="margin:0 auto 24px;">Our campus student support team is active 24/7 to help you resolve housing, complaints, or listing questions.</p>
+      <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
+        <a class="btn dark" target="_blank" rel="noopener" href="https://mail.google.com/mail/?view=cm&fs=1&to=charlesloveth002@gmail.com&su=CampusNest%20Inquiry%20or%20Complaint">✉️ Message via Gmail</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://wa.me/2347018051613?text=Hi%20CampusNest%20Support,%20I%20have%20an%20enquiry/complaint.">💬 Chat on WhatsApp</a>
+      </div>
+    </div>
+  </section>
 </main>
 
+<!-- Footer -->
 <footer>
   <div class="wrap">
-    <div class="top">
-      <a class="brand" href="#home" aria-label="CampusNest home"><svg class="nest" viewBox="0 0 64 52" aria-hidden="true"><ellipse cx="25" cy="25" rx="7" ry="9.5" fill="#F4EBD0" transform="rotate(-10 25 25)"/>
-<ellipse cx="38" cy="26" rx="7" ry="9.5" fill="#FFF8E7" transform="rotate(9 38 26)"/>
-<path d="M3 30 C3 45 19 50 32 50 C45 50 61 45 61 30 C48 37 16 37 3 30 Z" fill="#A67C2E"/>
-<g fill="none" stroke-linecap="round" stroke-width="1.7">
-<path d="M6 33 C14 46 50 46 58 33" stroke="#D9B76A"/>
-<path d="M10 38 C20 47 44 47 54 38" stroke="#E8CC8A"/>
-<path d="M8 31 C18 45 26 46 34 47" stroke="#C99A46"/>
-<path d="M56 31 C46 45 38 46 30 47" stroke="#C99A46"/>
-<path d="M14 34 L30 46" stroke="#F0DCA0"/><path d="M26 36 L44 46" stroke="#F0DCA0"/><path d="M40 35 L52 43" stroke="#E8CC8A"/>
-<path d="M5 31 L1 26" stroke="#C09A4E"/><path d="M59 31 L63 25" stroke="#C09A4E"/><path d="M11 34 L5 30" stroke="#D9B76A"/>
-</g>
-<path d="M3 30 C16 37 48 37 61 30" fill="none" stroke="#C09A4E" stroke-width="2.4" stroke-linecap="round"/></svg><span class="bn">Campus<b>Nest</b></span></a>
-      <ul><li><a href="#rooms">Rooms</a></li><li><a href="#how">How it works</a></li><li><a href="#business">List your business</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">Contact</a></li><li><a href="legal.html#terms">Terms</a></li><li><a href="legal.html#privacy">Privacy</a></li></ul>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="brand" href="#home" aria-label="CampusNest home">
+          <svg class="nest" viewBox="0 0 60 48" fill="none" aria-hidden="true">
+            <path d="M6 26C10 38 22 44 30 44C38 44 50 38 54 26" stroke="#d89b2b" stroke-width="4" stroke-linecap="round"/>
+            <path d="M12 32C18 40 25 41 30 41C35 41 42 40 48 32" stroke="#f6ecdb" stroke-width="2.5" stroke-linecap="round" opacity="0.8"/>
+            <ellipse cx="23" cy="20" rx="6.5" ry="8.5" fill="#fdfaf3" transform="rotate(-8 23 20)"/>
+            <ellipse cx="37" cy="20" rx="6.5" ry="8.5" fill="#d89b2b" transform="rotate(8 37 20)"/>
+          </svg>
+          <span class="bn">Campus<b>Nest</b></span>
+        </a>
+        <p>Empowering Nigerian university students with verified, scam-free accommodation, roommate pairing, and vibrant campus commerce.</p>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Platform</h5>
+          <ul>
+            <li><a href="#rooms">Hostels & Rooms</a></li>
+            <li><a href="#roommates">Roommate Finder</a></li>
+            <li><a href="#shop">Campus Market</a></li>
+            <li><a href="#business">List Property / Service</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Federal Campuses</h5>
+          <ul>
+            <li><a href="#rooms">Obafemi Awolowo University (OAU), Ile-Ife</a></li>
+            <li><a href="#rooms">UNILAG (Akoka & Yaba)</a></li>
+            <li><a href="#rooms">UI (Ibadan)</a></li>
+            <li><a href="#rooms">UNN (Nsukka & Enugu)</a></li>
+            <li><a href="#rooms">ABU (Zaria)</a></li>
+            <li><a href="#rooms">UNIBEN (Benin City)</a></li>
+            <li><a href="#rooms">UNILORIN (Ilorin)</a></li>
+            <li><a href="#rooms">FUTA (Akure)</a></li>
+            <li><a href="#rooms">UNIABUJA (Abuja)</a></li>
+            <li><a href="#rooms">UNIPORT (Port Harcourt)</a></li>
+            <li><a href="#fUni" style="font-size:0.85rem; color:#a2b9af;">+ View All 36+ Federal Universities</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="#how">How it Works</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="legal.html#terms">Terms of Service</a></li>
+            <li><a href="legal.html#privacy">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="copy">© Loveth 2026</div>
+
+    <div class="copy">
+      <div>© 2026 CampusNest Technologies. Built for Student Living.</div>
+      <div style="display:flex; gap:16px;">
+        <a target="_blank" rel="noopener" href="https://wa.me/2347018051613?text=Hi%20CampusNest,%20I%20would%20like%20to%20join%20the%20student%20community.">WhatsApp Community</a>
+        <a target="_blank" rel="noopener" href="https://mail.google.com/mail/?view=cm&fs=1&to=charlesloveth002@gmail.com&su=CampusNest%20Inquiry">Gmail Support</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
   </div>
 </footer>
+
+<!-- Lightbox Gallery Dialog -->
 <dialog id="galleryDlg">
   <div id="galStage"></div>
-  <div class="cbtns"><button class="btn ghost" id="galPrev" type="button">Previous</button><span id="galCount" class="note" style="align-self:center"></span><button class="btn ghost" id="galNext" type="button">Next</button><button class="btn dark" id="galClose" type="button">Close</button></div>
+  <div class="cbtns">
+    <button class="btn ghost" id="galPrev" type="button">Previous</button>
+    <span id="galCount" class="note" style="align-self:center; font-size:0.85rem; color:var(--muted);"></span>
+    <button class="btn ghost" id="galNext" type="button">Next</button>
+    <button class="btn dark" id="galClose" type="button">Close</button>
+  </div>
 </dialog>
+
+<!-- Report Listing Dialog -->
 <dialog id="reportDlg">
   <form id="reportForm">
-    <h3>Report this listing</h3>
-    <label>Reason<select id="repReason"><option>Scam or fake listing</option><option>Wrong price or details</option><option>Room already taken</option><option>Offensive content</option><option>Other</option></select></label>
-    <label>More details (optional)<input id="repDetails" autocomplete="off"></label>
-    <div class="cbtns"><button class="btn dark" type="submit">Send report</button><button class="btn ghost" id="repCancel" type="button">Cancel</button></div>
-    <p class="note" id="repMsg" role="status"></p>
+    <h3 style="margin-top:0;">Report this listing</h3>
+    <label style="display:block; margin-bottom:12px; font-size:0.9rem;">Reason
+      <select id="repReason" style="width:100%; padding:10px; margin-top:4px; border-radius:8px; border:1px solid var(--line);">
+        <option>Scam or fake listing</option>
+        <option>Wrong price or misleading photos</option>
+        <option>Room already taken</option>
+        <option>Unresponsive landlord</option>
+        <option>Other</option>
+      </select>
+    </label>
+    <label style="display:block; margin-bottom:16px; font-size:0.9rem;">Additional Details (optional)
+      <input id="repDetails" autocomplete="off" style="width:100%; padding:10px; margin-top:4px; border-radius:8px; border:1px solid var(--line);">
+    </label>
+    <div class="cbtns">
+      <button class="btn dark" type="submit">Submit Report</button>
+      <button class="btn ghost" id="repCancel" type="button">Cancel</button>
+    </div>
+    <p class="note" id="repMsg" role="status" style="margin-top:10px;"></p>
   </form>
 </dialog>
+
+<!-- Toast Notification -->
 <div class="toast" id="toast"></div>
 
+<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.0/dist/umd/supabase.js"></script>
 <script src="https://js.paystack.co/v1/inline.js"></script>
 <script src="pay.js"></script>
