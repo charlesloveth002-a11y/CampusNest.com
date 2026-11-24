@@ -192,7 +192,10 @@ function render() {
   });
 
   const none = rooms.length ? "No rooms match your search criteria. Try a different filter." : "No rooms have been added yet.";
-  if ($("grid")) $("grid").innerHTML = c ? h : '<div class="empty">' + none + '</div>';
+  if ($("grid")) {
+    $("grid").innerHTML = c ? h : '<div class="empty">' + none + '</div>';
+    if (!user) $("grid").hidden = true;
+  }
   if ($("cnt")) $("cnt").textContent = saved.size;
 }
 
@@ -427,7 +430,40 @@ async function doRefresh() {
   $("loggedOutBox").hidden = !!user;
   if (user) $("welcomeName").textContent = (profile && profile.full_name) || user.email;
   
-  if (user) hideAuth();
+  // Hero price badge
+  if ($("heroBadgePrice")) {
+    $("heroBadgePrice").textContent = user ? "₦180,000 / yr" : "Verified Rate • Log in to view";
+  }
+
+  // 1. Search & AI Banner visibility
+  if ($("searchLoggedOutTeaser")) $("searchLoggedOutTeaser").hidden = !!user;
+  if ($("searchSection")) $("searchSection").hidden = !user;
+  if ($("aiBannerSection")) $("aiBannerSection").hidden = !user;
+
+  // 2. Available Rooms visibility
+  if ($("roomsLoggedOutBox")) $("roomsLoggedOutBox").hidden = !!user;
+  if ($("grid")) $("grid").hidden = !user;
+  if ($("roomsBar")) $("roomsBar").hidden = !user;
+
+  // 3. Roommate Hub visibility
+  if ($("roommatesLoggedOutBox")) $("roommatesLoggedOutBox").hidden = !!user;
+  if ($("roommatesList")) $("roommatesList").hidden = !user;
+  if ($("postRoommateBtn")) $("postRoommateBtn").hidden = !user;
+
+  // 4. Campus Marketplace visibility
+  if ($("sellItemBtn")) $("sellItemBtn").hidden = !user;
+  document.querySelectorAll(".market-unlocked").forEach(el => el.hidden = !user);
+  document.querySelectorAll(".market-locked").forEach(el => el.hidden = !!user);
+
+  // 5. Partner with CampusNest visibility
+  if ($("bizLoggedOutBox")) $("bizLoggedOutBox").hidden = !!user;
+  if ($("bizFormWrapper")) $("bizFormWrapper").hidden = !user;
+  if ($("bizGridWrapper")) $("bizGridWrapper").hidden = !user;
+
+  if (user) {
+    hideAuth();
+    render();
+  }
 }
 
 async function logout() {
@@ -582,6 +618,11 @@ $("bizForm").onsubmit = async e => {
 /* ---------- Interactive Tabs & NestBot AI ---------- */
 document.querySelectorAll(".campus-card").forEach(card => {
   card.onclick = () => {
+    if (!user) {
+      showAuth("register");
+      $("authSub").textContent = "Create a free student account or log in to explore verified hostels for this campus!";
+      return;
+    }
     const campus = card.dataset.campus;
     if ($("fUni")) {
       $("fUni").value = campus;

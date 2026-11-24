@@ -186,7 +186,7 @@
           </div>
         </div>
 
-        <h1>Find Your Perfect <span>Campus Nest</span> Without Agent Stress.</h1>
+        <h1>Find Your Perfect <span class="brand-word">Campus<b>Nest</b></span> Without Agent Stress.</h1>
         <p>Verified hostels near campus, student roommate matching, and campus marketplace. Everything you need for university life in one place.</p>
         
         <ul class="trust">
@@ -215,7 +215,7 @@
             </div>
             <div style="text-align:right;">
               <div class="label">Price</div>
-              <div class="val" style="color:var(--accent);">₦180,000 / yr</div>
+              <div class="val" id="heroBadgePrice" style="color:var(--accent);">₦180,000 / yr</div>
             </div>
           </div>
         </div>
@@ -245,8 +245,23 @@
     </div>
   </div>
 
-  <!-- Interactive Search Section -->
-  <div class="wrap search-wrapper">
+  <!-- Logged-Out Search Teaser Callout -->
+  <div class="wrap" id="searchLoggedOutTeaser">
+    <div class="locked-search-banner">
+      <div class="locked-search-content">
+        <span class="locked-pill">🔒 Verified Student Living</span>
+        <h3>Find Verified Hostels Across 36+ Federal Universities</h3>
+        <p>Register or log in to search by proximity to lecture theatres, check real-time light & water status, view room availability, and connect directly with verified landlords.</p>
+      </div>
+      <div class="locked-search-actions">
+        <button class="btn" type="button" onclick="showAuth('register')">Create Free Student Account</button>
+        <button class="btn ghost light" type="button" onclick="showAuth('login')">Log In</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Search Section (Available on Log In) -->
+  <div class="wrap search-wrapper" id="searchSection">
     <div class="search" role="search">
       <div class="search-tabs">
         <button class="tab-btn active" type="button" data-tab="rooms">
@@ -341,7 +356,7 @@
   </div>
 
   <!-- NestBot AI Assistant Banner -->
-  <div class="wrap">
+  <div class="wrap" id="aiBannerSection">
     <div class="ai-banner">
       <div class="ai-banner-content">
         <div class="ai-avatar">🤖</div>
@@ -379,7 +394,7 @@
             <h3>Obafemi Awolowo University, Ile-Ife</h3>
             <div class="campus-areas">📍 Road 1, Asherifa, Mayfair, Parakin & Lagere</div>
             <div class="campus-stat">
-              <span>From ₦120,000 / yr</span>
+              <span>Verified Student Lodges</span>
               <span style="color:var(--accent);">Explore 140+ Rooms →</span>
             </div>
           </div>
@@ -394,7 +409,7 @@
             <h3>University of Lagos (UNILAG), Akoka</h3>
             <div class="campus-areas">📍 Akoka, Yaba, New Hall, St. Finbarr's, Abule Oja</div>
             <div class="campus-stat">
-              <span>From ₦180,000 / yr</span>
+              <span>Verified Student Lodges</span>
               <span style="color:var(--accent);">Explore 95+ Rooms →</span>
             </div>
           </div>
@@ -409,7 +424,7 @@
             <h3>University of Ibadan (UI), Ibadan</h3>
             <div class="campus-areas">📍 Agbowo, Bodija, UI Main Gate, Samonda</div>
             <div class="campus-stat">
-              <span>From ₦110,000 / yr</span>
+              <span>Verified Student Lodges</span>
               <span style="color:var(--accent);">Explore 110+ Rooms →</span>
             </div>
           </div>
@@ -424,7 +439,7 @@
             <h3>Federal University of Technology, Akure</h3>
             <div class="campus-areas">📍 South Gate, North Gate, Aule, FUTA Junction</div>
             <div class="campus-stat">
-              <span>From ₦100,000 / yr</span>
+              <span>Verified Student Lodges</span>
               <span style="color:var(--accent);">Explore 85+ Rooms →</span>
             </div>
           </div>
@@ -441,11 +456,28 @@
           <h2>Available Student Hostels & Rooms</h2>
           <p class="sub">Verified listings with clear pricing, proximity to faculty, and direct landlord/agent contact.</p>
         </div>
-        <div class="bar">
+        <div class="bar" id="roomsBar">
           <button class="btn ghost" id="savedBtn">Show saved (<span id="cnt">0</span>)</button>
         </div>
       </div>
+      
       <div class="grid" id="grid"></div>
+
+      <!-- Logged-Out Teaser for Rooms -->
+      <div id="roomsLoggedOutBox" class="locked-preview-card">
+        <div class="lock-icon-wrap">🔒</div>
+        <h3>500+ Verified Campus Accommodations Available</h3>
+        <p>Browse full lodge photo galleries, check 24/7 electricity and running water ratings, compare room prices, and connect directly with verified landlords without agent commission fees.</p>
+        <div class="locked-preview-features">
+          <span>✔ Physical Inspection Badges</span>
+          <span>✔ Zero Ghost Agents</span>
+          <span>✔ Direct Landlord WhatsApp</span>
+        </div>
+        <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-top:20px;">
+          <button class="btn dark" type="button" onclick="showAuth('register')">Create Free Account to View Rooms</button>
+          <button class="btn ghost" type="button" onclick="showAuth('login')">Log In</button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -490,10 +522,10 @@
           <h2>👥 Roommate Matching Hub</h2>
           <p class="sub">Can't afford a single apartment alone? Connect with verified fellow students to split rent safely.</p>
         </div>
-        <a class="btn dark" href="#business" style="font-size:0.9rem;">+ Post Roommate Request</a>
+        <a class="btn dark" id="postRoommateBtn" href="#business" style="font-size:0.9rem;">+ Post Roommate Request</a>
       </div>
 
-      <div class="grid">
+      <div class="grid" id="roommatesList">
         <article class="roommate-card">
           <div class="roommate-top">
             <img class="roommate-avatar" src="demo-shoes.jpg" alt="Student Profile">
@@ -563,6 +595,17 @@
           <a class="btn dark" target="_blank" rel="noopener" href="https://wa.me/2347018051613?text=Hi%20Blessing,%20I%20saw%20your%20roommate%20request%20on%20CampusNest." style="padding:9px; text-align:center;">Connect on WhatsApp</a>
         </article>
       </div>
+
+      <!-- Logged-Out Teaser for Roommates -->
+      <div id="roommatesLoggedOutBox" class="locked-preview-card alt">
+        <div class="lock-icon-wrap">🤝</div>
+        <h3>Verified Student Roommate Pairing</h3>
+        <p>Over 1,200+ university students are currently seeking verified flatmates across Nigerian campuses. Register your student profile to browse roommate requests, filter by faculty and gender preferences, and split rent safely.</p>
+        <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-top:18px;">
+          <button class="btn dark" type="button" onclick="showAuth('register')">Register to Find a Roommate</button>
+          <button class="btn ghost" type="button" onclick="showAuth('login')">Log In</button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -572,12 +615,12 @@
       <div class="section-head">
         <div>
           <h2>🛍️ Student Campus Marketplace</h2>
-          <p class="sub">Buy, sell and exchange dorm appliances, textbooks, gadgets and thrift fashion directly with campus peers.</p>
+          <p class="sub" id="shopSub">Affordable student campus marketplace. Buy, sell and exchange dorm appliances, textbooks, gadgets and thrift fashion directly with campus peers.</p>
         </div>
-        <a class="btn dark" href="#business" style="font-size:0.9rem;">+ Sell Your Item</a>
+        <a class="btn dark" id="sellItemBtn" href="#business" style="font-size:0.9rem;">+ Sell Your Item</a>
       </div>
 
-      <div class="market-grid">
+      <div class="market-grid" id="marketGrid">
         <article class="market-card">
           <div class="market-img">
             <img src="demo-shoes.jpg" alt="Campus Thrift Shoes">
@@ -585,9 +628,14 @@
           </div>
           <div class="market-in">
             <h4>Grey Mesh Campus Sneakers (Size 42)</h4>
-            <div class="market-price">₦12,500</div>
             <div class="market-seller">👤 Tolu (UNILAG New Hall)</div>
-            <a class="btn dark" target="_blank" rel="noopener" href="https://wa.me/2347018051613?text=Hi,%20I%20want%20to%20buy%20the%20Sneakers%20from%20CampusNest." style="padding:8px; font-size:0.85rem; margin-top:8px;">Chat Seller</a>
+            <div class="market-unlocked">
+              <div class="market-price">₦12,500</div>
+              <a class="btn dark" target="_blank" rel="noopener" href="https://wa.me/2347018051613?text=Hi,%20I%20want%20to%20buy%20the%20Sneakers%20from%20CampusNest." style="padding:8px; font-size:0.85rem; margin-top:8px;">Chat Seller</a>
+            </div>
+            <div class="market-locked">
+              <div class="market-price-locked" onclick="showAuth('login')">🔒 Log in to view price & chat seller</div>
+            </div>
           </div>
         </article>
 
@@ -598,9 +646,14 @@
           </div>
           <div class="market-in">
             <h4>Rechargeable Study Lamp + Power Bank</h4>
-            <div class="market-price">₦9,000</div>
             <div class="market-seller">👤 Chinedu (Hostel Block C)</div>
-            <a class="btn dark" target="_blank" rel="noopener" href="https://wa.me/2347018051613?text=Hi,%20I%20want%20to%20buy%20the%20Study%20Lamp%20from%20CampusNest." style="padding:8px; font-size:0.85rem; margin-top:8px;">Chat Seller</a>
+            <div class="market-unlocked">
+              <div class="market-price">₦9,000</div>
+              <a class="btn dark" target="_blank" rel="noopener" href="https://wa.me/2347018051613?text=Hi,%20I%20want%20to%20buy%20the%20Study%20Lamp%20from%20CampusNest." style="padding:8px; font-size:0.85rem; margin-top:8px;">Chat Seller</a>
+            </div>
+            <div class="market-locked">
+              <div class="market-price-locked" onclick="showAuth('login')">🔒 Log in to view price & chat seller</div>
+            </div>
           </div>
         </article>
 
@@ -611,9 +664,14 @@
           </div>
           <div class="market-in">
             <h4>Gold Layered Necklaces & Rings</h4>
-            <div class="market-price">₦6,500</div>
             <div class="market-seller">👤 Zara Styles (Faculty of Arts)</div>
-            <a class="btn dark" target="_blank" rel="noopener" href="https://wa.me/2347018051613?text=Hi,%20I%20want%20to%20order%20the%20Jewelry%20set%20from%20CampusNest." style="padding:8px; font-size:0.85rem; margin-top:8px;">Chat Seller</a>
+            <div class="market-unlocked">
+              <div class="market-price">₦6,500</div>
+              <a class="btn dark" target="_blank" rel="noopener" href="https://wa.me/2347018051613?text=Hi,%20I%20want%20to%20order%20the%20Jewelry%20set%20from%20CampusNest." style="padding:8px; font-size:0.85rem; margin-top:8px;">Chat Seller</a>
+            </div>
+            <div class="market-locked">
+              <div class="market-price-locked" onclick="showAuth('login')">🔒 Log in to view price & chat seller</div>
+            </div>
           </div>
         </article>
 
@@ -624,9 +682,14 @@
           </div>
           <div class="market-in">
             <h4>Cork Notice Board & Desk Organizer</h4>
-            <div class="market-price">₦5,000</div>
             <div class="market-seller">👤 Emeka (Engineering Quad)</div>
-            <a class="btn dark" target="_blank" rel="noopener" href="https://wa.me/2347018051613?text=Hi,%20I%20want%20to%20buy%20the%20Notice%20Board%20from%20CampusNest." style="padding:8px; font-size:0.85rem; margin-top:8px;">Chat Seller</a>
+            <div class="market-unlocked">
+              <div class="market-price">₦5,000</div>
+              <a class="btn dark" target="_blank" rel="noopener" href="https://wa.me/2347018051613?text=Hi,%20I%20want%20to%20buy%20the%20Notice%20Board%20from%20CampusNest." style="padding:8px; font-size:0.85rem; margin-top:8px;">Chat Seller</a>
+            </div>
+            <div class="market-locked">
+              <div class="market-price-locked" onclick="showAuth('login')">🔒 Log in to view price & chat seller</div>
+            </div>
           </div>
         </article>
       </div>
@@ -744,7 +807,8 @@
         </div>
       </div>
 
-      <div style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:14px; padding:28px; margin-top:32px;">
+      <!-- Submission Form Wrapper (Shown when logged in) -->
+      <div id="bizFormWrapper" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:14px; padding:28px; margin-top:32px;">
         <h3 style="margin-bottom:12px;">Submit Your Listing Request</h3>
         <p class="sub" style="margin-bottom:20px;">Fill out your details below. Our campus inspection team reviews and activates your verified listing within 2 hours.</p>
         
@@ -769,8 +833,21 @@
         </form>
       </div>
 
-      <h3 style="margin-top:40px;">Active Verified Campus Partners</h3>
-      <div class="grid bizlist" id="bizGrid" style="margin-top:20px;"></div>
+      <!-- Logged-Out Business Teaser Callout -->
+      <div id="bizLoggedOutBox" style="background:rgba(255,255,255,0.08); border:1.5px solid rgba(255,255,255,0.18); border-radius:14px; padding:32px 24px; text-align:center; margin-top:32px;">
+        <h3 style="color:#fff; margin-bottom:10px;">Ready to List Your Hostel or Campus Business?</h3>
+        <p class="sub" style="color:#dbeae3; max-width:540px; margin:0 auto 20px;">Landlords, verified agents, and student merchants must have an account to submit listing requests and receive direct student inquiries.</p>
+        <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
+          <button class="btn" type="button" onclick="showAuth('register')">Register as Agent / Seller</button>
+          <button class="btn ghost light" type="button" onclick="showAuth('login')">Log In to Submit</button>
+        </div>
+      </div>
+
+      <!-- Active Partners Wrapper (Shown when logged in) -->
+      <div id="bizGridWrapper">
+        <h3 style="margin-top:40px;">Active Verified Campus Partners</h3>
+        <div class="grid bizlist" id="bizGrid" style="margin-top:20px;"></div>
+      </div>
     </div>
   </section>
 
