@@ -426,9 +426,9 @@ async function doRefresh() {
     const fresh = profile && profile.created_at && (Date.now() - new Date(profile.created_at)) < 10 * 60 * 1000;
     $("greetHello").textContent = fresh ? "Welcome to CampusNest," : "Welcome back,";
   }
-  $("welcome").hidden = !user;
-  $("loggedOutBox").hidden = !!user;
-  if (user) $("welcomeName").textContent = (profile && profile.full_name) || user.email;
+  if ($("welcome")) $("welcome").hidden = !user;
+  if ($("loggedOutBox")) $("loggedOutBox").hidden = !!user;
+  if ($("welcomeName") && user) $("welcomeName").textContent = (profile && profile.full_name) || user.email;
   
   // Hero price badge
   if ($("heroBadgePrice")) {
@@ -482,8 +482,8 @@ function showSaved() {
 }
 
 $("authBtn").onclick = () => (user ? logout() : showAuth("login"));
-$("logoutBtn").onclick = logout;
-$("openAuth").onclick = () => showAuth("register");
+if ($("logoutBtn")) $("logoutBtn").onclick = logout;
+if ($("openAuth")) $("openAuth").onclick = () => showAuth("register");
 if ($("upgradeBtn")) $("upgradeBtn").onclick = upgrade;
 if ($("heroSaved")) $("heroSaved").onclick = showSaved;
 
@@ -638,9 +638,9 @@ document.querySelectorAll(".tab-btn").forEach(btn => {
     document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
     const tab = btn.dataset.tab;
-    if (tab === "rooms") $("rooms").scrollIntoView({ behavior: "smooth" });
-    else if (tab === "roommates") $("roommates").scrollIntoView({ behavior: "smooth" });
-    else if (tab === "market") $("shop").scrollIntoView({ behavior: "smooth" });
+    if (tab === "rooms" && $("rooms")) $("rooms").scrollIntoView({ behavior: "smooth" });
+    else if (tab === "roommates" && $("roommates")) $("roommates").scrollIntoView({ behavior: "smooth" });
+    else if (tab === "market" && $("shop")) $("shop").scrollIntoView({ behavior: "smooth" });
   };
 });
 

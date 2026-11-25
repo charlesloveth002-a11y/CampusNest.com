@@ -29,7 +29,17 @@
   <p id="gate" class="empty">Checking access...</p>
 
   <div id="panel" hidden>
-    <h2>Listing fee</h2>
+    <!-- Admin Dashboard Navigation -->
+    <nav class="dash-nav" style="display:flex; gap:10px; flex-wrap:wrap; margin:20px 0 28px; border-bottom:1.5px solid var(--line, #e2e8f0); padding-bottom:14px; position:sticky; top:65px; background:var(--bg, #fdfaf3); z-index:10;">
+      <a class="btn ghost" href="#secFee" style="font-size:0.88rem; padding:8px 14px;">💰 Fee</a>
+      <a class="btn ghost" href="#roomFormTitle" style="font-size:0.88rem; padding:8px 14px;">➕ Add Room</a>
+      <a class="btn ghost" href="#secRooms" style="font-size:0.88rem; padding:8px 14px;">🏠 Rooms</a>
+      <a class="btn ghost" href="#secReports" style="font-size:0.88rem; padding:8px 14px;">🚩 Reports</a>
+      <a class="btn ghost" href="#secPayments" style="font-size:0.88rem; padding:8px 14px;">💳 Payments</a>
+      <a class="btn ghost" href="#secBiz" style="font-size:0.88rem; padding:8px 14px;">🏢 Businesses</a>
+    </nav>
+
+    <h2 id="secFee">Listing fee</h2>
     <form id="feeForm" class="adm">
       <label>Fee in ₦ (for 30 days)<input id="feeIn" type="number" min="1" required></label>
       <button class="btn dark" type="submit">Save fee</button>
@@ -54,18 +64,18 @@
       <span id="roomMsg" class="note"></span>
     </form>
 
-    <h2 style="margin-top:40px">Rooms</h2>
+    <h2 id="secRooms" style="margin-top:40px">Rooms</h2>
     <div class="scroll"><table id="roomTable"></table></div>
 
-    <h2 style="margin-top:40px">Reports</h2>
+    <h2 id="secReports" style="margin-top:40px">Reports</h2>
     <p class="sub">Open reports about listings. Hiding a listing takes it off the site and closes the report.</p>
     <div class="scroll"><table id="repTable"></table></div>
 
-    <h2 style="margin-top:40px">Payments from agents</h2>
+    <h2 id="secPayments" style="margin-top:40px">Payments from agents</h2>
     <p class="sub">Open the receipt, check it against your bank app, then confirm. Confirming gives the agent 30 more days.</p>
     <div class="scroll"><table id="payTable"></table></div>
 
-    <h2 style="margin-top:40px">Business requests</h2>
+    <h2 id="secBiz" style="margin-top:40px">Business requests</h2>
     <p class="sub">A business appears on the site only after you mark it as paid.</p>
     <div class="scroll"><table id="bizTable"></table></div>
 

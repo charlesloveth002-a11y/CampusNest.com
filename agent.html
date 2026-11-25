@@ -6,6 +6,92 @@
 <title>CampusNest Agent / Business Dashboard</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2052%22%3E%3Cellipse%20cx%3D%2225%22%20cy%3D%2225%22%20rx%3D%227%22%20ry%3D%229.5%22%20fill%3D%22%23F4EBD0%22%20transform%3D%22rotate%28-10%2025%2025%29%22/%3E%0A%3Cellipse%20cx%3D%2238%22%20cy%3D%2226%22%20rx%3D%227%22%20ry%3D%229.5%22%20fill%3D%22%23FFF8E7%22%20transform%3D%22rotate%289%2038%2026%29%22/%3E%0A%3Cpath%20d%3D%22M3%2030%20C3%2045%2019%2050%2032%2050%20C45%2050%2061%2045%2061%2030%20C48%2037%2016%2037%203%2030%20Z%22%20fill%3D%22%23A67C2E%22/%3E%0A%3Cg%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%20stroke-width%3D%221.7%22%3E%0A%3Cpath%20d%3D%22M6%2033%20C14%2046%2050%2046%2058%2033%22%20stroke%3D%22%23D9B76A%22/%3E%0A%3Cpath%20d%3D%22M10%2038%20C20%2047%2044%2047%2054%2038%22%20stroke%3D%22%23E8CC8A%22/%3E%0A%3Cpath%20d%3D%22M8%2031%20C18%2045%2026%2046%2034%2047%22%20stroke%3D%22%23C99A46%22/%3E%0A%3Cpath%20d%3D%22M56%2031%20C46%2045%2038%2046%2030%2047%22%20stroke%3D%22%23C99A46%22/%3E%0A%3Cpath%20d%3D%22M14%2034%20L30%2046%22%20stroke%3D%22%23F0DCA0%22/%3E%3Cpath%20d%3D%22M26%2036%20L44%2046%22%20stroke%3D%22%23F0DCA0%22/%3E%3Cpath%20d%3D%22M40%2035%20L52%2043%22%20stroke%3D%22%23E8CC8A%22/%3E%0A%3Cpath%20d%3D%22M5%2031%20L1%2026%22%20stroke%3D%22%23C09A4E%22/%3E%3Cpath%20d%3D%22M59%2031%20L63%2025%22%20stroke%3D%22%23C09A4E%22/%3E%3Cpath%20d%3D%22M11%2034%20L5%2030%22%20stroke%3D%22%23D9B76A%22/%3E%0A%3C/g%3E%0A%3Cpath%20d%3D%22M3%2030%20C16%2037%2048%2037%2061%2030%22%20fill%3D%22none%22%20stroke%3D%22%23C09A4E%22%20stroke-width%3D%222.4%22%20stroke-linecap%3D%22round%22/%3E%3C/svg%3E">
 <link rel="stylesheet" href="style.css">
+<style>
+.dash-header-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.dash-nav {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  background: var(--card, #fff);
+  padding: 6px;
+  border-radius: 12px;
+  border: 1px solid var(--line, #e2e8f0);
+  margin-bottom: 28px;
+}
+.dash-nav-btn {
+  background: transparent;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--muted, #64748b);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.dash-nav-btn:hover {
+  color: var(--text, #1e293b);
+  background: rgba(0, 0, 0, 0.04);
+}
+.dash-nav-btn.active {
+  background: var(--primary-dark, #0f4335);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(15, 67, 53, 0.25);
+}
+.dash-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.dash-stat-card {
+  background: var(--card, #fff);
+  border: 1px solid var(--line, #e2e8f0);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+.dash-stat-card .val {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--primary-dark, #0f4335);
+  margin-top: 4px;
+}
+.dash-stat-card .lbl {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--muted, #64748b);
+  font-weight: 700;
+}
+.dash-pane {
+  background: var(--card, #fff);
+  border: 1px solid var(--line, #e2e8f0);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  animation: fadeIn 0.25s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (max-width: 768px) {
+  .dash-pane { padding: 18px; }
+  .dash-nav { width: 100%; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 8px; }
+  .dash-nav-btn { white-space: nowrap; flex: 0 0 auto; }
+}
+</style>
 </head>
 <body>
 <header class="nav"><div class="wrap">
@@ -21,97 +107,232 @@
 <path d="M5 31 L1 26" stroke="#C09A4E"/><path d="M59 31 L63 25" stroke="#C09A4E"/><path d="M11 34 L5 30" stroke="#D9B76A"/>
 </g>
 <path d="M3 30 C16 37 48 37 61 30" fill="none" stroke="#C09A4E" stroke-width="2.4" stroke-linecap="round"/></svg><span class="bn">Campus<b>Nest</b></span></a>
-  <strong>Agent / Business dashboard</strong>
-  <a class="btn" href="index.html">Back to site</a>
+  <strong>Agent / Landlord Dashboard</strong>
+  <a class="btn" href="index.html">← Back to Site</a>
 </div></header>
 
-<main class="wrap" style="padding:40px 20px">
+<main class="wrap" style="padding:32px 20px 60px;">
   <p id="gate" class="empty">Checking access...</p>
 
   <div id="panel" hidden>
-    <div id="status" class="statusbar" role="status"></div>
+    <!-- Top Welcome & Status Banner -->
+    <div id="status" class="statusbar" role="status" style="margin-bottom:20px;"></div>
 
-    <h2>Add a listing</h2>
-    <form id="roomForm" class="adm">
-      <label>Name<input id="rName" required autocomplete="off"></label>
-      <label>Type<select id="rType"><option>Hostel</option><option>Room</option><option>Apartment</option></select></label>
-      <label>Location<input id="rLoc" required placeholder="Area or street" autocomplete="off"></label>
-      <label>Price (numbers only)<input id="rPrice" type="number" min="0" required></label>
-      <label>Price is per<select id="rPer"><option>year</option><option>month</option><option>semester</option></select></label>
-      <label>Rooms available<input id="rUnits" type="number" min="1" value="1" required></label>
-      <label>Amenities (separate with commas)<input id="rAm" autocomplete="off"></label>
-      <label>Photo link (optional)<input id="rPhoto" placeholder="https://..."></label>
-      <label>Upload photos (up to 5)<input id="rFile" type="file" accept="image/*" multiple></label>
-      <label>Upload a short video (optional, max 25 MB)<input id="rVideo" type="file" accept="video/*"></label>
-      <label>Contact (phone or email)<input id="rContact" autocomplete="off"></label>
-      <label class="wide">Short description<input id="rDesc" autocomplete="off"></label>
-      <button class="btn dark" type="submit">Add listing</button>
-      <span id="roomMsg" class="note" role="status"></span>
-    </form>
-    <p class="note">New listings show as Pending. They appear on the site after CampusNest approves them. Have many identical rooms? Put the number in "Rooms available" instead of adding each one.</p>
+    <!-- Standard Modern Dashboard Navigation Tabs -->
+    <nav class="dash-nav" role="tablist">
+      <button class="dash-nav-btn active" type="button" data-pane="pane-overview">
+        <span>📊</span> Dashboard Overview
+      </button>
+      <button class="dash-nav-btn" type="button" data-pane="pane-add">
+        <span>➕</span> Add New Listing
+      </button>
+      <button class="dash-nav-btn" type="button" data-pane="pane-rooms">
+        <span>🏠</span> My Listings (<span id="myCount">0</span>)
+      </button>
+      <button class="dash-nav-btn" type="button" data-pane="pane-biz">
+        <span>💼</span> Campus Business
+      </button>
+      <button class="dash-nav-btn" type="button" data-pane="pane-pay">
+        <span>💳</span> Subscription & Payment
+      </button>
+    </nav>
 
-    <h2 style="margin-top:40px">My listings</h2>
-    <div class="scroll"><table id="myTable"></table></div>
+    <!-- PANE 1: DASHBOARD OVERVIEW -->
+    <div class="dash-pane" id="pane-overview">
+      <h2 style="margin-bottom:16px;">Welcome to Your Landlord Portal</h2>
+      <p class="sub" style="margin-bottom:24px;">Manage all your student hostels, monitor verification badges, and keep your listing subscriptions up to date without stress.</p>
 
-    <h2 style="margin-top:40px">Post a business</h2>
-    <p class="note">Selling clothes, food or another service? Business posting is paid separately from accommodation (same fee).</p>
-    <form id="bizForm" class="adm">
-      <label>Business name<input id="bName" required autocomplete="off"></label>
-      <label>What you offer<input id="bCat" placeholder="For example: clothes, food" autocomplete="off"></label>
-      <label>Email<input id="bMail" type="email"></label>
-      <label>Phone<input id="bPhone"></label>
-      <label class="wide">Short description<input id="bDetails" autocomplete="off"></label>
-      <label>Photos (up to 5)<input id="bFiles" type="file" accept="image/*" multiple></label>
-      <label>Short video (optional, max 25 MB)<input id="bVideo" type="file" accept="video/*"></label>
-      <button class="btn dark" type="submit">Add business</button>
-      <span id="bizMsg" class="note" role="status"></span>
-    </form>
-    <div class="scroll" style="margin-top:16px"><table id="bizTable"></table></div>
-
-    <h2 id="pay" style="margin-top:40px">Payment</h2>
-    <div class="two">
-      <div class="bank">
-        <h3>Pay online</h3>
-        <p class="note" id="onlineNote"></p>
-        <button class="btn" id="payHousing" type="button">Pay for accommodation listings</button>
-        <button class="btn ghost" id="payBiz" type="button" style="margin-left:6px">Pay to post businesses</button>
-        <p class="note">Card details are entered in Paystack's secure window, never on this page.</p>
-        <h3 style="margin-top:26px">Or pay by bank transfer</h3>
-        <div class="acct">
-          <strong>PalmPay</strong>
-          <span>Account number</span>
-          <b>7018051613</b>
-          <span>Account name</span>
-          <b>Onyinye Loveth</b>
-          <button class="btn ghost cp" type="button" data-c="7018051613">Copy account number</button>
+      <div class="dash-stat-grid">
+        <div class="dash-stat-card">
+          <div class="lbl">Total Accommodations</div>
+          <div class="val" id="statRooms">0</div>
         </div>
-        <div class="acct">
-          <strong>UBA</strong>
-          <span>Account number</span>
-          <b>2277009173</b>
-          <span>Account name</span>
-          <b>Onyinye Loveth</b>
-          <button class="btn ghost cp" type="button" data-c="2277009173">Copy account number</button>
+        <div class="dash-stat-card">
+          <div class="lbl">Subscription Status</div>
+          <div class="val" id="statSub" style="font-size:1.3rem;">Checking...</div>
         </div>
-        <p class="note" id="feeNote"></p>
+        <div class="dash-stat-card">
+          <div class="lbl">Active Inquiries</div>
+          <div class="val" style="color:var(--accent);">WhatsApp Direct</div>
+        </div>
       </div>
 
-      <div>
-        <h3>I have paid</h3>
-        <form id="payForm">
-          <label>Payment is for<select id="pKind"><option value="housing">Accommodation listings</option><option value="business">Posting businesses</option></select></label>
-          <label>Amount paid (₦)<input id="pAmt" type="number" min="1" required></label>
-          <label>Name on the account you paid from<input id="pName" required autocomplete="off"></label>
-          <label>Transfer reference (optional)<input id="pRef" autocomplete="off"></label>
-          <label>Add receipt (photo or PDF, max 5 MB)<input id="pFile" type="file" accept="image/*,application/pdf" required></label>
-          <button class="btn dark" type="submit">Send receipt</button>
-          <p class="note" id="payMsg" role="status"></p>
-        </form>
+      <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:20px;">
+        <button class="btn dark" type="button" onclick="switchPane('pane-add')">+ Add an Accommodation</button>
+        <button class="btn ghost" type="button" onclick="switchPane('pane-rooms')">View My Listed Rooms</button>
+        <button class="btn ghost" type="button" onclick="switchPane('pane-pay')">Renew Access / Pay</button>
       </div>
     </div>
 
-    <h2 style="margin-top:40px">Payment history</h2>
-    <div class="scroll"><table id="payTable"></table></div>
+    <!-- PANE 2: ADD LISTING -->
+    <div class="dash-pane" id="pane-add" hidden>
+      <h2>Add a New Accommodation</h2>
+      <p class="sub" style="margin-bottom:20px;">Provide clear photos and details. Your listing will be physically inspected or verified before going live.</p>
+
+      <form id="roomForm" class="adm">
+        <label>Hostel / Lodge Name
+          <input id="rName" required autocomplete="off" placeholder="e.g. Royal Palms Luxury Court">
+        </label>
+        <label>Type
+          <select id="rType">
+            <option>Hostel</option>
+            <option>Room</option>
+            <option>Apartment</option>
+          </select>
+        </label>
+        <label>Location & Campus Proximity
+          <input id="rLoc" required placeholder="e.g. Road 1, 3 mins walk to Campus Gate" autocomplete="off">
+        </label>
+        <label>Price in ₦ (numbers only)
+          <input id="rPrice" type="number" min="0" required placeholder="180000">
+        </label>
+        <label>Price Period
+          <select id="rPer">
+            <option>year</option>
+            <option>month</option>
+            <option>semester</option>
+          </select>
+        </label>
+        <label>Rooms Available
+          <input id="rUnits" type="number" min="1" value="1" required>
+        </label>
+        <label>Amenities (separate with commas)
+          <input id="rAm" autocomplete="off" placeholder="24/7 Running water, Solar inverter, Fenced gate, Wardrobe">
+        </label>
+        <label>Photo Link (optional)
+          <input id="rPhoto" placeholder="https://...">
+        </label>
+        <label>Upload Photos (up to 5 images)
+          <input id="rFile" type="file" accept="image/*" multiple>
+        </label>
+        <label>Upload a Short Video Tour (max 25 MB)
+          <input id="rVideo" type="file" accept="video/*">
+        </label>
+        <label>Contact Phone / WhatsApp
+          <input id="rContact" autocomplete="off" placeholder="08012345678">
+        </label>
+        <label class="wide">Detailed Description
+          <input id="rDesc" autocomplete="off" placeholder="Describe room size, prepaid meter, security guard, etc.">
+        </label>
+        <button class="btn dark" type="submit" style="margin-top:10px;">Submit Listing for Verification</button>
+        <span id="roomMsg" class="note" role="status" style="margin-top:10px; display:block;"></span>
+      </form>
+    </div>
+
+    <!-- PANE 3: MY LISTINGS -->
+    <div class="dash-pane" id="pane-rooms" hidden>
+      <div class="dash-header-wrap">
+        <div>
+          <h2>My Accommodations</h2>
+          <p class="sub">View, duplicate, hide or remove your student rooms.</p>
+        </div>
+        <button class="btn dark" type="button" onclick="switchPane('pane-add')">+ Add Another Room</button>
+      </div>
+      <div class="scroll"><table id="myTable"></table></div>
+    </div>
+
+    <!-- PANE 4: POST BUSINESS -->
+    <div class="dash-pane" id="pane-biz" hidden>
+      <h2>Post Campus Business / Service</h2>
+      <p class="sub" style="margin-bottom:20px;">Selling groceries, dorm laundry, snacks, or student electronics? Reach university freshers and returnees.</p>
+      
+      <form id="bizForm" class="adm">
+        <label>Business Name
+          <input id="bName" required autocomplete="off" placeholder="e.g. Swift Campus Laundry">
+        </label>
+        <label>What You Offer
+          <input id="bCat" placeholder="e.g. Laundry, Food delivery, Tech repair" autocomplete="off">
+        </label>
+        <label>Contact Email
+          <input id="bMail" type="email" placeholder="support@campusbiz.com">
+        </label>
+        <label>Phone / WhatsApp
+          <input id="bPhone" placeholder="08012345678">
+        </label>
+        <label class="wide">Short Description
+          <input id="bDetails" autocomplete="off" placeholder="e.g. Free dorm delivery for hostels near New Hall and Faculty of Science">
+        </label>
+        <label>Photos (up to 5)
+          <input id="bFiles" type="file" accept="image/*" multiple>
+        </label>
+        <label>Short Video Tour (max 25 MB)
+          <input id="bVideo" type="file" accept="video/*">
+        </label>
+        <button class="btn dark" type="submit">Submit Business Listing</button>
+        <span id="bizMsg" class="note" role="status" style="margin-top:10px; display:block;"></span>
+      </form>
+
+      <h3 style="margin-top:36px; margin-bottom:12px;">My Registered Businesses</h3>
+      <div class="scroll"><table id="bizTable"></table></div>
+    </div>
+
+    <!-- PANE 5: PAYMENT & BILLING -->
+    <div class="dash-pane" id="pane-pay" hidden>
+      <h2 id="pay">Subscription & Fee Payment</h2>
+      <p class="sub" style="margin-bottom:24px;">Keep your verified green inspection badges active on university searches.</p>
+
+      <div class="two">
+        <div class="bank">
+          <h3>Pay Online (Instant Activation)</h3>
+          <p class="note" id="onlineNote" style="margin-bottom:14px;"></p>
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:18px;">
+            <button class="btn" id="payHousing" type="button">Pay for Accommodation (₦1,500)</button>
+            <button class="btn ghost" id="payBiz" type="button">Pay for Business (₦1,500)</button>
+          </div>
+          <p class="note">Card transactions are secured by Paystack 256-bit SSL encryption.</p>
+
+          <h3 style="margin-top:28px;">Or Pay via Direct Bank Transfer</h3>
+          <div class="acct">
+            <strong>PalmPay</strong>
+            <span>Account Number</span>
+            <b>7018051613</b>
+            <span>Account Name</span>
+            <b>Onyinye Loveth</b>
+            <button class="btn ghost cp" type="button" data-c="7018051613">Copy Account Number</button>
+          </div>
+          <div class="acct">
+            <strong>UBA (United Bank for Africa)</strong>
+            <span>Account Number</span>
+            <b>2277009173</b>
+            <span>Account Name</span>
+            <b>Onyinye Loveth</b>
+            <button class="btn ghost cp" type="button" data-c="2277009173">Copy Account Number</button>
+          </div>
+          <p class="note" id="feeNote"></p>
+        </div>
+
+        <div>
+          <h3>Confirm Your Bank Transfer</h3>
+          <p class="sub" style="margin-bottom:16px;">Paid via bank app? Upload your payment receipt screenshot for verification.</p>
+          <form id="payForm">
+            <label>Payment is for
+              <select id="pKind">
+                <option value="housing">Accommodation listings</option>
+                <option value="business">Posting businesses</option>
+              </select>
+            </label>
+            <label>Amount Paid (₦)
+              <input id="pAmt" type="number" min="1" required placeholder="1500">
+            </label>
+            <label>Sender Account Name
+              <input id="pName" required autocomplete="off" placeholder="Name as seen on your bank receipt">
+            </label>
+            <label>Transfer Reference / Session ID (optional)
+              <input id="pRef" autocomplete="off">
+            </label>
+            <label>Upload Bank Receipt Screenshot (Max 5 MB)
+              <input id="pFile" type="file" accept="image/*,application/pdf" required>
+            </label>
+            <button class="btn dark" type="submit" style="margin-top:12px;">Submit Transfer Receipt</button>
+            <p class="note" id="payMsg" role="status" style="margin-top:10px;"></p>
+          </form>
+        </div>
+      </div>
+
+      <h3 style="margin-top:40px; margin-bottom:12px;">Official Receipts & Payment History</h3>
+      <div class="scroll"><table id="payTable"></table></div>
+    </div>
+
   </div>
 </main>
 
@@ -131,6 +352,23 @@ const fmt = d => new Date(d).toLocaleDateString("en-GB", { day: "numeric", month
 let FEE = 1500;
 const kindName = k => ({ housing: "Accommodation posting", business: "Business posting", student: "Student premium" }[k] || k);
 let me = null, prof = null, mine = [], pays = [];
+
+// Dashboard Tab Switching Functionality
+function switchPane(paneId) {
+  document.querySelectorAll('.dash-pane').forEach(p => p.hidden = true);
+  document.querySelectorAll('.dash-nav-btn').forEach(b => b.classList.remove('active'));
+  const target = $(paneId);
+  if (target) target.hidden = false;
+  const btn = document.querySelector(`[data-pane="${paneId}"]`);
+  if (btn) btn.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+document.querySelectorAll('.dash-nav-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    switchPane(btn.dataset.pane);
+  });
+});
 
 function access() {
   const now = Date.now();
@@ -164,8 +402,13 @@ async function load() {
   $("status").textContent = a.t + " Business posting: " + (bizOk ? "active until " + fmt(prof.business_until) + "." : "not active (₦" + FEE.toLocaleString() + " for 30 days).");
   $("status").className = "statusbar " + (a.ok ? "ok" : "bad");
 
+  if ($("statSub")) $("statSub").textContent = a.ok ? "Active" : "Expired";
+
   const r = await db.from("rooms").select("*").eq("agent_id", me.id).order("created_at", { ascending: false });
   mine = r.data || [];
+  if ($("myCount")) $("myCount").textContent = mine.length;
+  if ($("statRooms")) $("statRooms").textContent = mine.length;
+
   $("myTable").innerHTML = "<tr><th>Name</th><th>Location</th><th>Price</th><th>Rooms</th><th>Status</th><th>Shown</th><th></th></tr>" +
     (mine.map(x => "<tr><td>" + esc(x.name) + "</td><td>" + esc(x.location) + "</td><td>₦" + Number(x.price).toLocaleString() + " / " + esc(x.price_period) +
       "</td><td>" + x.units + '</td><td><span class="badge ' + esc(x.status) + '">' + esc(x.status) + "</span></td><td>" + (x.available ? "Yes" : "Hidden") +
@@ -208,7 +451,7 @@ document.addEventListener("click", async e => {
     $("rPer").value = x.price_period; $("rUnits").value = x.units; $("rAm").value = x.amenities || "";
     $("rPhoto").value = x.photo_url || ""; $("rContact").value = x.contact || ""; $("rDesc").value = x.description || "";
     $("roomMsg").textContent = "Copied. Change what is different, then click Add listing.";
-    window.scrollTo(0, 0);
+    switchPane('pane-add');
     return;
   }
   let res;
@@ -224,7 +467,7 @@ document.addEventListener("click", async e => {
 
 $("roomForm").onsubmit = async e => {
   e.preventDefault();
-  if (!access().ok) { $("roomMsg").textContent = "Your access has ended. Please make a payment below."; return; }
+  if (!access().ok) { $("roomMsg").textContent = "Your access has ended. Please make a payment."; return; }
   let photos = [], video = null;
   $("roomMsg").textContent = "Uploading, please wait...";
   try { photos = await uploadPhotos($("rFile").files); video = await uploadListingVideo($("rVideo").files[0]); }
@@ -288,7 +531,7 @@ $("bizForm").onsubmit = async e => {
     contact_email: $("bMail").value.trim(), phone: $("bPhone").value.trim()
   });
   const live = prof.business_until && new Date(prof.business_until) > Date.now();
-  $("bizMsg").textContent = error ? "Could not add: " + error.message : (live ? "Business added and live." : "Saved, but not live yet. It goes live after you pay for business posting.");
+  $("bizMsg").textContent = error ? "Could not send: " + error.message : ("Business request sent." + (live ? " It is live on the site straight away." : " Make a payment below so it goes live."));
   if (!error) { e.target.reset(); load(); }
 };
 
